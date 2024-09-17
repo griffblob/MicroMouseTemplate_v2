@@ -1,0 +1,46 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   4 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "Rmem"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:160:2524:45-49"\
+    }\
+    ChartData {\
+      Name         "Rmem_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:160:2524:45-49"\
+    }\
+    ChartData {\
+      Name         "Lmem"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:160:2524:61-65"\
+    }\
+    ChartData {\
+      Name         "Lmem_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:160:2524:61-65"\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

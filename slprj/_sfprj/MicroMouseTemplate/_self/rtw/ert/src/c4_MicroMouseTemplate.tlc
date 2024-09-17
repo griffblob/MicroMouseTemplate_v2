@@ -1,0 +1,69 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   7 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "prePAT"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2507:64-70"\
+      Dimensions   [8]\
+    }\
+    ChartData {\
+      Name         "prePAT_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2507:64-70"\
+    }\
+    ChartData {\
+      Name         "preNoLED"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2507:131-139"\
+    }\
+    ChartData {\
+      Name         "preNoLED_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2507:131-139"\
+    }\
+    ChartData {\
+      Name         "ADCOFF"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2507:202-208"\
+    }\
+    ChartData {\
+      Name         "ADCOFF_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2507:202-208"\
+    }\
+    ChartData {\
+      Name         "ADCON"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2507:276-281"\
+      Dimensions   [1,8]\
+    }\
+  }
+  %return ChartDataElements
+%endfunction
