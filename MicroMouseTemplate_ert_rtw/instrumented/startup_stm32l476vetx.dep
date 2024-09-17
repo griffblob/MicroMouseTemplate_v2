@@ -1,0 +1,2 @@
+startup_stm32l476vetx.o: \
+ C:/Users/griff/Documents/MicroMouseTemplate_v2/MicroMouseProgramming/STM32CubeIDE/Application/User/Startup/instrumented/startup_stm32l476vetx.s

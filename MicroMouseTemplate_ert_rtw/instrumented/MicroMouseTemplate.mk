@@ -2,7 +2,7 @@
 ## Makefile generated for component 'MicroMouseTemplate'. 
 ## 
 ## Makefile     : MicroMouseTemplate.mk
-## Generated on : Tue Sep 17 12:16:17 2024
+## Generated on : Tue Sep 17 15:10:03 2024
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/MicroMouseTemplate.elf
 ## Product type : executable
 ## 

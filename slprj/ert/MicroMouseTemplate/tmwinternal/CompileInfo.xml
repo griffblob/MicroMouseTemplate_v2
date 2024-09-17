@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/ci/19700101 http://schema.mathworks.com/mf0/sl_modelref_info/R2024a http://schema.mathworks.com/mf0/slexec_mm_sto/R2024a_202305081229 http://schema.mathworks.com/mf0/sltp_mm/R2023a_202209151115">
-  <ModelRefInfoRepo.ModelRefInfoRoot type="ModelRefInfoRepo.ModelRefInfoRoot" uuid="8156f41a-2f31-4ce9-91e4-0d4efb516e5b">
+  <ModelRefInfoRepo.ModelRefInfoRoot type="ModelRefInfoRepo.ModelRefInfoRoot" uuid="d7478cd1-2fb7-462e-86c8-a1e86e67b85f">
     <JITEngines>s1l6iPzLZFxGTsDNpiaGOBB</JITEngines>
     <JITEngines>s2lkuSriw8Cp5FkzdfFDQFE</JITEngines>
-    <JITEngines>sBFKxZSr3yX3DO4eJsXgPwG</JITEngines>
-    <JITEngines>sR2anj5FlkkHPs2Q1xvV5KH</JITEngines>
-    <JITEngines>sV44uxj8kozN1ydVGFBL0ZF</JITEngines>
+    <JITEngines>sAwlUVYXhfo29b5BuMQTU0C</JITEngines>
+    <JITEngines>sOvOo1HNo7ou4WitudgAJfD</JITEngines>
     <JITEngines>sfogr9awDePLQwwHQ4BAMxB</JITEngines>
-    <JITEngines>srSwUVms3ozg5my3CnMXKrC</JITEngines>
-    <calibrationData type="ModelRefInfoRepo.CalibrationData" uuid="bddb3d3d-3cb8-4e7b-aeda-f8795e1c41e8">
-      <InternalData>[{&quot;Name&quot;:&quot;ADC_L&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;ADC1s&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;ADC_H&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;IMU_Accel&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;IMU_Gyro&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;Thresholds&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;Detections&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;currTicksRS&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;currTicksLS&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;LineValL&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;LineValR&quot;,&quot;Profile&quot;:&quot;&quot;}]</InternalData>
+    <JITEngines>sj2sJ9JL6Xc57tMqS988pIH</JITEngines>
+    <JITEngines>svg6EE9iGYGwCJMgAgkTABF</JITEngines>
+    <calibrationData type="ModelRefInfoRepo.CalibrationData" uuid="ff359d4e-51f2-4ff8-b1b7-94090cbd89a1">
+      <InternalData>[{&quot;Name&quot;:&quot;ADC_L&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;ADC1s&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;ADC_H&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;IMU_Accel&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;IMU_Gyro&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;Thresholds&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;Detections&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;currTicksRS&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;currTicksLS&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;LineValL&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;LineValR&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;WalCalL&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;WalCalR&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;WalCalFl&quot;,&quot;Profile&quot;:&quot;&quot;},{&quot;Name&quot;:&quot;WalCalFr&quot;,&quot;Profile&quot;:&quot;&quot;}]</InternalData>
       <ModelName>MicroMouseTemplate</ModelName>
     </calibrationData>
-    <childModelRefInfo type="ModelRefInfoRepo.ChildModelRefInfo" uuid="fdb58682-45ed-48a5-b8c6-8cfb0e0bf5e9">
+    <childModelRefInfo type="ModelRefInfoRepo.ChildModelRefInfo" uuid="c2e677ed-4fc4-4f7d-9050-f1aeeca52a7d">
       <modelName>MicroMouseTemplate</modelName>
       <modelPath>MicroMouseTemplate</modelPath>
     </childModelRefInfo>
     <compiledTFinal>10.0</compiledTFinal>
-    <dataSourceInfo type="ModelRefInfoRepo.DataSourceInfo" uuid="82e43a3b-6f15-4170-9d48-eeca95cad51f">
-      <dataSources type="ModelRefInfoRepo.SourceInfo" uuid="cf1c78b6-8368-4a85-a364-06e799372181">
+    <dataSourceInfo type="ModelRefInfoRepo.DataSourceInfo" uuid="ecc158a3-f6f4-4655-b0ba-59940c3f8ea9">
+      <dataSources type="ModelRefInfoRepo.SourceInfo" uuid="36525289-3afc-461a-ab8e-1e4006f32af2">
         <includeAllSections>true</includeAllSections>
         <sourceName>base workspace</sourceName>
         <type>BaseWorkspace</type>
@@ -63,56 +63,56 @@
     <solverStatusFlags>327</solverStatusFlags>
     <timingAndTaskingRegistry>&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;slexec_sto version=&quot;1.1&quot; packageUris=&quot;http://schema.mathworks.com/mf0/slexec_mm_sto/R2024a_202305081229&quot;&gt;
-  &lt;sto.Registry type=&quot;sto.Registry&quot; uuid=&quot;2539a632-eacd-43df-b827-fbf29aa918cd&quot;&gt;
+  &lt;sto.Registry type=&quot;sto.Registry&quot; uuid=&quot;215a03a0-d094-481d-afec-c5a01ebc9aee&quot;&gt;
     &lt;executionSpec&gt;Undetermined&lt;/executionSpec&gt;
     &lt;identifier&gt;MicroMouseTemplate&lt;/identifier&gt;
-    &lt;clockRegistry type=&quot;sto.ClockRegistry&quot; uuid=&quot;a0b1f5d4-9128-4b8d-a8b1-634ee67e0a20&quot;&gt;
-      &lt;clocks type=&quot;sto.Timer&quot; uuid=&quot;84b0b6a8-41d6-4ce7-8e06-9c02ab338b78&quot;&gt;
+    &lt;clockRegistry type=&quot;sto.ClockRegistry&quot; uuid=&quot;8f819d88-edab-4c12-937b-795450020554&quot;&gt;
+      &lt;clocks type=&quot;sto.Timer&quot; uuid=&quot;1d504724-c283-4641-9a8f-e143283a1e1e&quot;&gt;
         &lt;computedFundamentalDiscretePeriod&gt;.01&lt;/computedFundamentalDiscretePeriod&gt;
-        &lt;fastestDiscreteRate type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;4ceb2fb4-d8d3-4f43-9d66-90b02c15a79a&quot;/&gt;
+        &lt;fastestDiscreteRate type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;3a979b84-d45e-4d0c-8ba3-84d9eb5593ac&quot;/&gt;
         &lt;isDefaultTimer&gt;true&lt;/isDefaultTimer&gt;
         &lt;resolution&gt;.01&lt;/resolution&gt;
         &lt;timeAdvanceMode&gt;FixedStep&lt;/timeAdvanceMode&gt;
         &lt;identifier&gt;MicroMouseTemplate::defaultTimer&lt;/identifier&gt;
-        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;4ceb2fb4-d8d3-4f43-9d66-90b02c15a79a&quot;&gt;
+        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;3a979b84-d45e-4d0c-8ba3-84d9eb5593ac&quot;&gt;
           &lt;annotation&gt;D1&lt;/annotation&gt;
           &lt;clockId&gt;MicroMouseTemplate::defaultTimer&lt;/clockId&gt;
           &lt;description&gt;Discrete 1&lt;/description&gt;
           &lt;taskId&gt;_task0&lt;/taskId&gt;
-          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;795bc9dd-dc2f-4873-b4d7-de629d0d9f49&quot;&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;b81d1087-d1d9-4b47-9ac5-7a7b9db63fc0&quot;&gt;
             &lt;period&gt;.01&lt;/period&gt;
             &lt;rateType&gt;ClassicPeriodicDiscrete&lt;/rateType&gt;
           &lt;/rateSpec&gt;
         &lt;/rates&gt;
-        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;4a232750-9497-4a65-b860-5fcbcc5b79be&quot;&gt;
+        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;f9f71c2a-a63b-4f4b-a4f8-dad0444c9fd0&quot;&gt;
           &lt;annotation&gt;D2&lt;/annotation&gt;
           &lt;clockId&gt;MicroMouseTemplate::defaultTimer&lt;/clockId&gt;
           &lt;colorIndex&gt;1&lt;/colorIndex&gt;
           &lt;description&gt;Discrete 2&lt;/description&gt;
           &lt;rateIdx&gt;1&lt;/rateIdx&gt;
           &lt;taskId&gt;_task1&lt;/taskId&gt;
-          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;3d3e7ded-2a17-4cdc-bdf9-c6f582ed0fe1&quot;&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;4176a17b-d0c8-41ea-95eb-16f98163a12f&quot;&gt;
             &lt;period&gt;.1&lt;/period&gt;
             &lt;rateType&gt;ClassicPeriodicDiscrete&lt;/rateType&gt;
           &lt;/rateSpec&gt;
         &lt;/rates&gt;
-        &lt;baseRate type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;e2e04b1f-e315-4143-bc81-369f68ed528a&quot;&gt;
+        &lt;baseRate type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;622d7d8d-8626-42ac-89da-53667c0cb813&quot;&gt;
           &lt;annotation&gt;D1&lt;/annotation&gt;
           &lt;clockId&gt;MicroMouseTemplate::defaultTimer&lt;/clockId&gt;
           &lt;description&gt;Discrete 1&lt;/description&gt;
           &lt;taskId&gt;_task0&lt;/taskId&gt;
-          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;9fd033a6-5780-4cb4-a3db-d811ff0d305c&quot;&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;f4aed9eb-153b-4b36-81a2-3dcc767c57fb&quot;&gt;
             &lt;period&gt;.01&lt;/period&gt;
             &lt;rateType&gt;ClassicPeriodicDiscrete&lt;/rateType&gt;
           &lt;/rateSpec&gt;
         &lt;/baseRate&gt;
       &lt;/clocks&gt;
-      &lt;clocks type=&quot;sto.Event&quot; uuid=&quot;d7a2bed1-2d34-4b7d-a735-3fe6d90a8330&quot;&gt;
+      &lt;clocks type=&quot;sto.Event&quot; uuid=&quot;3b0ca553-5474-4cdc-b0af-a67aeeb1c5fa&quot;&gt;
         &lt;eventType&gt;PARAMETER_CHANGE_EVENT&lt;/eventType&gt;
         &lt;cNum&gt;1&lt;/cNum&gt;
         &lt;clockType&gt;Event&lt;/clockType&gt;
         &lt;identifier&gt;ParameterChangeEvent&lt;/identifier&gt;
-        &lt;rates type=&quot;sto.ModelWideEventRate&quot; uuid=&quot;c165d8fa-5548-44c8-ad14-fcc9079288aa&quot;&gt;
+        &lt;rates type=&quot;sto.ModelWideEventRate&quot; uuid=&quot;7fe066ca-f137-4c1a-bf12-7161775e6c10&quot;&gt;
           &lt;annotation&gt;Inf&lt;/annotation&gt;
           &lt;clockId&gt;ParameterChangeEvent&lt;/clockId&gt;
           &lt;colorIndex&gt;-1&lt;/colorIndex&gt;
@@ -120,7 +120,7 @@
           &lt;rateIdx&gt;-1&lt;/rateIdx&gt;
           &lt;taskId&gt;ModelWideParameterChangeEvent&lt;/taskId&gt;
           &lt;useForExecution&gt;NotForExecution&lt;/useForExecution&gt;
-          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;bf0c8cb6-5dd1-4a58-841d-9f0459d2784a&quot;&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;fd13008e-fc06-4e0a-b071-ffc3d0cb3143&quot;&gt;
             &lt;period&gt;inf&lt;/period&gt;
             &lt;rateType&gt;ModelWideParameterChangeEvent&lt;/rateType&gt;
           &lt;/rateSpec&gt;
@@ -128,10 +128,10 @@
       &lt;/clocks&gt;
       &lt;timeAdvanceMode&gt;FixedStep&lt;/timeAdvanceMode&gt;
     &lt;/clockRegistry&gt;
-    &lt;taskRegistry type=&quot;sto.TaskRegistry&quot; uuid=&quot;222adffb-878e-42cd-8437-0c933d208eec&quot;&gt;
-      &lt;rootTaskHierarchyElements type=&quot;sto.Task&quot; uuid=&quot;2f3f0437-f26f-4ca6-be6d-37fd8bb7306d&quot;&gt;
+    &lt;taskRegistry type=&quot;sto.TaskRegistry&quot; uuid=&quot;51127f1e-48b3-493e-81f8-28b3da429627&quot;&gt;
+      &lt;rootTaskHierarchyElements type=&quot;sto.Task&quot; uuid=&quot;e02053a8-d256-4444-a35f-73af724c3436&quot;&gt;
         &lt;isExplicit&gt;true&lt;/isExplicit&gt;
-        &lt;rates type=&quot;sto.ModelWideEventRate&quot; uuid=&quot;0250ec3a-c94b-4d44-8821-ab5b9dfd2e66&quot;&gt;
+        &lt;rates type=&quot;sto.ModelWideEventRate&quot; uuid=&quot;e232238a-f87b-444d-9ae7-fe8756282786&quot;&gt;
           &lt;annotation&gt;Inf&lt;/annotation&gt;
           &lt;clockId&gt;ParameterChangeEvent&lt;/clockId&gt;
           &lt;colorIndex&gt;-1&lt;/colorIndex&gt;
@@ -139,7 +139,7 @@
           &lt;rateIdx&gt;-1&lt;/rateIdx&gt;
           &lt;taskId&gt;ModelWideParameterChangeEvent&lt;/taskId&gt;
           &lt;useForExecution&gt;NotForExecution&lt;/useForExecution&gt;
-          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;58100c8d-2c53-4e97-979d-941b0de00690&quot;&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;7ebd3495-dfd6-4493-b509-8ddbb9d8a0d5&quot;&gt;
             &lt;period&gt;inf&lt;/period&gt;
             &lt;rateType&gt;ModelWideParameterChangeEvent&lt;/rateType&gt;
           &lt;/rateSpec&gt;
@@ -150,15 +150,15 @@
         &lt;identifier&gt;ModelWideParameterChangeEvent&lt;/identifier&gt;
         &lt;priority&gt;-1&lt;/priority&gt;
       &lt;/rootTaskHierarchyElements&gt;
-      &lt;rootTaskHierarchyElements type=&quot;sto.Task&quot; uuid=&quot;200cc01b-3cd7-4434-bed6-89c3d1cab4b8&quot;&gt;
+      &lt;rootTaskHierarchyElements type=&quot;sto.Task&quot; uuid=&quot;7cba9109-517c-4dbe-b3ec-6fb9dfc87ec3&quot;&gt;
         &lt;isExecutable&gt;true&lt;/isExecutable&gt;
         &lt;orderIndex&gt;1&lt;/orderIndex&gt;
-        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;1b59f926-7c0d-4ab0-ba1a-cdf199a9acec&quot;&gt;
+        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;c8ebb1df-5a77-4e84-a4b4-91a4c58bfa2b&quot;&gt;
           &lt;annotation&gt;D1&lt;/annotation&gt;
           &lt;clockId&gt;MicroMouseTemplate::defaultTimer&lt;/clockId&gt;
           &lt;description&gt;Discrete 1&lt;/description&gt;
           &lt;taskId&gt;_task0&lt;/taskId&gt;
-          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;222d1fa7-40bc-47d8-a49b-40dc4d6fe929&quot;&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;dc4d6e29-9ffc-4463-a58e-b52d0d346cab&quot;&gt;
             &lt;period&gt;.01&lt;/period&gt;
             &lt;rateType&gt;ClassicPeriodicDiscrete&lt;/rateType&gt;
           &lt;/rateSpec&gt;
@@ -169,17 +169,17 @@
         &lt;identifier&gt;_task0&lt;/identifier&gt;
         &lt;priority&gt;40&lt;/priority&gt;
       &lt;/rootTaskHierarchyElements&gt;
-      &lt;rootTaskHierarchyElements type=&quot;sto.Task&quot; uuid=&quot;241e380c-38eb-4ac3-b198-7e477d73236b&quot;&gt;
+      &lt;rootTaskHierarchyElements type=&quot;sto.Task&quot; uuid=&quot;cd42e560-e5a0-4237-be4a-f934d3e5932d&quot;&gt;
         &lt;isExecutable&gt;true&lt;/isExecutable&gt;
         &lt;orderIndex&gt;2&lt;/orderIndex&gt;
-        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;ee372a69-2961-4c21-bb23-9ef098a24d20&quot;&gt;
+        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;e7e84a02-ad77-4095-98e5-73e583df0705&quot;&gt;
           &lt;annotation&gt;D2&lt;/annotation&gt;
           &lt;clockId&gt;MicroMouseTemplate::defaultTimer&lt;/clockId&gt;
           &lt;colorIndex&gt;1&lt;/colorIndex&gt;
           &lt;description&gt;Discrete 2&lt;/description&gt;
           &lt;rateIdx&gt;1&lt;/rateIdx&gt;
           &lt;taskId&gt;_task1&lt;/taskId&gt;
-          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;a544f0ba-4e22-4791-a008-d6c900a2893d&quot;&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;002cf486-d62e-4b26-9b08-fa34b106d6bb&quot;&gt;
             &lt;period&gt;.1&lt;/period&gt;
             &lt;rateType&gt;ClassicPeriodicDiscrete&lt;/rateType&gt;
           &lt;/rateSpec&gt;
@@ -191,24 +191,24 @@
         &lt;identifier&gt;_task1&lt;/identifier&gt;
         &lt;priority&gt;41&lt;/priority&gt;
       &lt;/rootTaskHierarchyElements&gt;
-      &lt;taskDependencyGraph type=&quot;sto.SerializedTaskConnectionList&quot; uuid=&quot;f8245506-94bb-4895-beea-86263e8a8748&quot;&gt;
+      &lt;taskDependencyGraph type=&quot;sto.SerializedTaskConnectionList&quot; uuid=&quot;e86784b7-e41f-44db-bdb2-68ed0255eb2d&quot;&gt;
         &lt;clockIdentifier&gt;MicroMouseTemplate::defaultTimer&lt;/clockIdentifier&gt;
-        &lt;serializedConnectionProperties type=&quot;sto.SerializedConnectionProperties&quot; uuid=&quot;a2a41102-762d-4928-b04d-3090b58c1247&quot;&gt;
+        &lt;serializedConnectionProperties type=&quot;sto.SerializedConnectionProperties&quot; uuid=&quot;fd4930c5-2526-4930-af14-77fdf7646841&quot;&gt;
           &lt;targetClockIdentifier&gt;MicroMouseTemplate::defaultTimer&lt;/targetClockIdentifier&gt;
           &lt;targetTaskIdentifier&gt;_task0&lt;/targetTaskIdentifier&gt;
         &lt;/serializedConnectionProperties&gt;
         &lt;taskIdentifier&gt;_task1&lt;/taskIdentifier&gt;
       &lt;/taskDependencyGraph&gt;
-      &lt;taskDependencyGraph type=&quot;sto.SerializedTaskConnectionList&quot; uuid=&quot;030a19be-9618-435b-ba0e-2955f223d262&quot;&gt;
+      &lt;taskDependencyGraph type=&quot;sto.SerializedTaskConnectionList&quot; uuid=&quot;fdcd8d1f-deb3-4a9b-929f-948a3f837bd6&quot;&gt;
         &lt;clockIdentifier&gt;MicroMouseTemplate::defaultTimer&lt;/clockIdentifier&gt;
-        &lt;serializedConnectionProperties type=&quot;sto.SerializedConnectionProperties&quot; uuid=&quot;62f551d4-cfbd-4a28-821a-f7b35a36ebab&quot;&gt;
+        &lt;serializedConnectionProperties type=&quot;sto.SerializedConnectionProperties&quot; uuid=&quot;79dbcd97-69f9-4780-b2c7-0d1d22333eb3&quot;&gt;
           &lt;orderingImpact&gt;Impacted&lt;/orderingImpact&gt;
           &lt;targetClockIdentifier&gt;MicroMouseTemplate::defaultTimer&lt;/targetClockIdentifier&gt;
           &lt;targetTaskIdentifier&gt;_task1&lt;/targetTaskIdentifier&gt;
         &lt;/serializedConnectionProperties&gt;
         &lt;taskIdentifier&gt;_task0&lt;/taskIdentifier&gt;
       &lt;/taskDependencyGraph&gt;
-      &lt;taskDependencyGraph type=&quot;sto.SerializedTaskConnectionList&quot; uuid=&quot;db722a08-8fbd-4a7e-983e-f5f887d786d8&quot;&gt;
+      &lt;taskDependencyGraph type=&quot;sto.SerializedTaskConnectionList&quot; uuid=&quot;2a7b7a91-c294-432b-a19a-2f72cd7f801c&quot;&gt;
         &lt;clockIdentifier&gt;ParameterChangeEvent&lt;/clockIdentifier&gt;
         &lt;taskIdentifier&gt;ModelWideParameterChangeEvent&lt;/taskIdentifier&gt;
       &lt;/taskDependencyGraph&gt;
@@ -219,10 +219,10 @@
 &lt;/slexec_sto&gt;</timingAndTaskingRegistry>
     <userSpecifiedFixedStepSize>.01</userSpecifiedFixedStepSize>
     <zeroInternalMemoryAtStartupUnchecked>true</zeroInternalMemoryAtStartupUnchecked>
-    <FMUBlockMap type="ModelRefInfoRepo.FMUBlockInfo" uuid="e159ad01-d98f-44ca-81de-f55fc5fedb58"/>
-    <codeGenInfo type="ModelRefInfoRepo.CodeGenInformation" uuid="ccd03bc3-1278-4a28-aaa4-f7daaaa07087"/>
-    <compiledVariantInfos type="ModelRefInfoRepo.CompiledVariantInfoMap" uuid="90d8ddfe-b209-4598-b49c-8b61a73cfc7b"/>
-    <configSettingsForConsistencyChecks type="ModelRefInfoRepo.ConfigSettingsForConsistencyChecks" uuid="cb340a53-d1af-499a-8889-7d8ee6f4d410">
+    <FMUBlockMap type="ModelRefInfoRepo.FMUBlockInfo" uuid="63634285-f056-4424-83e9-447d5e574b15"/>
+    <codeGenInfo type="ModelRefInfoRepo.CodeGenInformation" uuid="63e5aef3-0061-4620-a7f2-dbc76bcd003e"/>
+    <compiledVariantInfos type="ModelRefInfoRepo.CompiledVariantInfoMap" uuid="1b8698a8-f7d9-43e5-bdff-7e0912f44629"/>
+    <configSettingsForConsistencyChecks type="ModelRefInfoRepo.ConfigSettingsForConsistencyChecks" uuid="d9dbb442-056c-4dc7-b7eb-609899198e86">
       <consistentOutportInitialization>true</consistentOutportInitialization>
       <fixedStepSize>.01</fixedStepSize>
       <frameDiagnosticSetting>2</frameDiagnosticSetting>
@@ -234,7 +234,7 @@
       <solverMode>SOLVER_MODE_MULTITASKING</solverMode>
       <solverName>FixedStepDiscrete</solverName>
       <solverType>SOLVER_TYPE_FIXEDSTEP</solverType>
-      <hardwareSettings type="ModelRefInfoRepo.HardwareSettings" uuid="a6f110ed-b159-4f2e-8ff9-747a03ee2ef6">
+      <hardwareSettings type="ModelRefInfoRepo.HardwareSettings" uuid="3111c4b0-8374-4a0c-b95a-46132767b958">
         <prodBitPerChar>8</prodBitPerChar>
         <prodBitPerDouble>64</prodBitPerDouble>
         <prodBitPerFloat>32</prodBitPerFloat>
@@ -253,33 +253,33 @@
         <prodWordSize>32</prodWordSize>
       </hardwareSettings>
     </configSettingsForConsistencyChecks>
-    <controllableInputRatesMap type="ModelRefInfoRepo.VarTsUIDMap" uuid="44045907-8429-4de2-9685-6b1f707daba4"/>
-    <controllableOutputRatesMap type="ModelRefInfoRepo.VarTsUIDMap" uuid="c1f132c2-7801-4502-a496-ddfdfb59c7c4"/>
-    <dataPortGroup type="ModelRefInfoRepo.DataPortGroup" uuid="127b55a8-b226-4427-843b-6a976e20d333"/>
-    <expFcnUnconnectedDataPortGroup type="ModelRefInfoRepo.DataPortGroup" uuid="aef5df13-d0c8-4e37-acb8-16809a007e2d"/>
-    <interfaceParameterInfo type="ModelRefInfoRepo.InterfaceParameterInfo" uuid="37979a58-c4bd-4642-bd4b-a4a07df13001"/>
-    <messageInfo type="ModelRefInfoRepo.MessageInformation" uuid="d3fec548-d1c0-4dd7-8ec7-efe4aab4c7e6"/>
-    <methodInfo type="ModelRefInfoRepo.MethodExistenceInfo" uuid="0f2c309a-3729-414b-b5ac-3f7567e25b6c">
+    <controllableInputRatesMap type="ModelRefInfoRepo.VarTsUIDMap" uuid="58ef52dc-96df-4353-9d24-0de6f6336c36"/>
+    <controllableOutputRatesMap type="ModelRefInfoRepo.VarTsUIDMap" uuid="ba7acdd6-0bf8-4490-8fc8-384ab859a136"/>
+    <dataPortGroup type="ModelRefInfoRepo.DataPortGroup" uuid="933adf2d-da36-4346-8652-0e0103bb718b"/>
+    <expFcnUnconnectedDataPortGroup type="ModelRefInfoRepo.DataPortGroup" uuid="65f6fad9-40fb-4efd-82ad-4c2eac81aca4"/>
+    <interfaceParameterInfo type="ModelRefInfoRepo.InterfaceParameterInfo" uuid="2c961348-9908-4cdf-90ed-b706f287518c"/>
+    <messageInfo type="ModelRefInfoRepo.MessageInformation" uuid="c0849385-617c-4fde-802d-f87757c31283"/>
+    <methodInfo type="ModelRefInfoRepo.MethodExistenceInfo" uuid="7362ff25-7a9b-417d-88d8-7d4e7f2cb3b4">
       <hasTerminateMethod>true</hasTerminateMethod>
     </methodInfo>
-    <periodicEventPortUnsupportedBlockInfo type="ModelRefInfoRepo.PeriodicEventPortUnsupportedBlockInfo" uuid="f768a670-5e2b-43ca-baf0-e821a555e6bd">
+    <periodicEventPortUnsupportedBlockInfo type="ModelRefInfoRepo.PeriodicEventPortUnsupportedBlockInfo" uuid="559d3185-3598-4f11-b202-83228a555b8c">
       <deterministicRTBs>MicroMouseTemplate/Subsystem/get Highs and Lows/Subsystem2/Rate Transition</deterministicRTBs>
       <deterministicRTBs>MicroMouseTemplate/Subsystem/get Highs and Lows/Subsystem2/Rate Transition1</deterministicRTBs>
     </periodicEventPortUnsupportedBlockInfo>
-    <portGroupsRequireSameRate type="ModelRefInfoRepo.PortGroupsRequireSameRate" uuid="41341014-27ea-4606-b785-e5ea05aac841">
-      <DSMPortGroups type="ModelRefInfoRepo.NameToPortGroupIdxVectMap" uuid="8470a6c7-eb5b-4db0-a8a8-d0e70068180c"/>
-      <GlobalDSMPortGroups type="ModelRefInfoRepo.NameToPortGroupIdxVectMap" uuid="ffd74799-308e-490e-95a7-a6ea9fb5321c"/>
-      <mergedPortGroups type="ModelRefInfoRepo.NameToPortGroupIdxVectMap" uuid="fb177043-c103-464d-beac-598617c0a457"/>
+    <portGroupsRequireSameRate type="ModelRefInfoRepo.PortGroupsRequireSameRate" uuid="50c4c1f8-e155-49cd-88cc-b91ceaf8fc54">
+      <DSMPortGroups type="ModelRefInfoRepo.NameToPortGroupIdxVectMap" uuid="ccef1679-a004-4923-84f6-f4681f9baa8f"/>
+      <GlobalDSMPortGroups type="ModelRefInfoRepo.NameToPortGroupIdxVectMap" uuid="01495513-42bf-43ff-9a32-f18c135855b1"/>
+      <mergedPortGroups type="ModelRefInfoRepo.NameToPortGroupIdxVectMap" uuid="2c8f198d-e9f6-405e-9e40-b207a9ad6215"/>
     </portGroupsRequireSameRate>
-    <rateBasedMdlGlobalDSMRateSpec type="ModelRefInfoRepo.GlobalDSMRateSpecMap" uuid="4fab6386-4d24-4ab4-a060-082aa23743cc"/>
-    <rateSpecOfGlobalDSMAccessedByDescExpFcnMdlMap type="ModelRefInfoRepo.GlobalDSMRateSpecMap" uuid="db41dc1d-d63c-4d53-85f0-f00731495238"/>
-    <rootBlockDiagramInterface type="ci.Model" uuid="83e701e7-6596-4ef7-90f3-f417bb0ccd4a">
-      <p_RootComponentInterface type="ci.ComponentInterface" uuid="9a5e8838-f045-40af-938e-4c8731767196">
+    <rateBasedMdlGlobalDSMRateSpec type="ModelRefInfoRepo.GlobalDSMRateSpecMap" uuid="82a294fd-e3e1-4013-81e8-f015bbe47f19"/>
+    <rateSpecOfGlobalDSMAccessedByDescExpFcnMdlMap type="ModelRefInfoRepo.GlobalDSMRateSpecMap" uuid="4a8a7a75-a337-4ef5-9c1a-566295c95d46"/>
+    <rootBlockDiagramInterface type="ci.Model" uuid="ad07f098-9e30-4288-ad45-dd43ae61fdbc">
+      <p_RootComponentInterface type="ci.ComponentInterface" uuid="b9b7cb98-b4a9-475a-81bd-387ecf3dd976">
         <p_Name>MicroMouseTemplate</p_Name>
         <p_Type>ROOT</p_Type>
       </p_RootComponentInterface>
     </rootBlockDiagramInterface>
-    <simulinkFunctions type="ModelRefInfoRepo.SimulinkFunctions" uuid="23a9cd3e-bcea-47c2-9fe0-424538768108">
+    <simulinkFunctions type="ModelRefInfoRepo.SimulinkFunctions" uuid="c6557710-3f6f-4d5d-a5f0-092f8ad00a80">
       <compSimulinkFunctionCatalog></compSimulinkFunctionCatalog>
     </simulinkFunctions>
     <sltpContext type="sltp.mm.core.Context" uuid="eaa72d88-4ee5-416d-b060-e92534399baf">
@@ -350,28 +350,28 @@
         </subgraph>
       </rootTask>
     </sltpContext>
-    <stateWriterToOwnerMap type="ModelRefInfoRepo.StateWriterInfo" uuid="a08b6678-5102-4a37-a5fe-4d9923d4ee30"/>
-    <stoClientDataRegistry type="sto.ClientDataRegistry" uuid="7b2e6c66-1ba0-4cd1-a394-1e4e5242bf3c">
-      <dataSets type="sto.ClientClockNamedDataSet" uuid="ac135fb8-3883-4842-b65c-e7050d2f690f">
+    <stateWriterToOwnerMap type="ModelRefInfoRepo.StateWriterInfo" uuid="1cdbc2ef-3d28-471e-83f0-0de6978df9a5"/>
+    <stoClientDataRegistry type="sto.ClientDataRegistry" uuid="a23230ee-6827-4ae7-adf7-1185a9e80489">
+      <dataSets type="sto.ClientClockNamedDataSet" uuid="6eb68d29-5611-489b-be3c-dbd0c7ba685f">
         <tag>sltpEvents</tag>
       </dataSets>
-      <dataSets type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="960108f7-c3b6-4597-bf1e-a05deede767e">
+      <dataSets type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="10d7ba0a-ff52-4971-9fd7-01e8808947c9">
         <tag>sltpTaskGroups</tag>
       </dataSets>
-      <dataSets type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="53a421dc-d3b5-4cc7-afd2-01ea3ffa7b76">
-        <dSet type="ModelRefInfoRepo.SltpTaskData" uuid="c78acf0b-5c39-4e59-9f09-375046ce4486"/>
-        <dSet type="ModelRefInfoRepo.SltpTaskData" uuid="e7b44710-5cd0-4172-bc34-789453a22658"/>
-        <tSet type="ModelRefInfoRepo.SltpTaskData" uuid="c78acf0b-5c39-4e59-9f09-375046ce4486">
+      <dataSets type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="9916358e-d6fa-4bfd-80e5-a4bcd172f426">
+        <dSet type="ModelRefInfoRepo.SltpTaskData" uuid="3afd690b-b82b-4d44-aced-dfbe671f338b"/>
+        <dSet type="ModelRefInfoRepo.SltpTaskData" uuid="d09e4609-e43f-4076-8b2d-84a839ce2fc9"/>
+        <tSet type="ModelRefInfoRepo.SltpTaskData" uuid="3afd690b-b82b-4d44-aced-dfbe671f338b">
           <dataName>D1</dataName>
-          <linkedSet type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="53a421dc-d3b5-4cc7-afd2-01ea3ffa7b76"/>
+          <linkedSet type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="9916358e-d6fa-4bfd-80e5-a4bcd172f426"/>
           <id type="sto.TaskHierarchyElementId">
             <clockId>MicroMouseTemplate::defaultTimer</clockId>
             <id>_task0</id>
           </id>
         </tSet>
-        <tSet type="ModelRefInfoRepo.SltpTaskData" uuid="e7b44710-5cd0-4172-bc34-789453a22658">
+        <tSet type="ModelRefInfoRepo.SltpTaskData" uuid="d09e4609-e43f-4076-8b2d-84a839ce2fc9">
           <dataName>D2</dataName>
-          <linkedSet type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="53a421dc-d3b5-4cc7-afd2-01ea3ffa7b76"/>
+          <linkedSet type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="9916358e-d6fa-4bfd-80e5-a4bcd172f426"/>
           <id type="sto.TaskHierarchyElementId">
             <clockId>MicroMouseTemplate::defaultTimer</clockId>
             <id>_task1</id>
@@ -380,6 +380,6 @@
         <tag>sltpTasks</tag>
       </dataSets>
     </stoClientDataRegistry>
-    <varTsUIDMap type="ModelRefInfoRepo.VarTsUIDMap" uuid="0c2e63ca-2fdb-426f-852d-997b0e26362b"/>
+    <varTsUIDMap type="ModelRefInfoRepo.VarTsUIDMap" uuid="ea167010-bc04-4e76-ab29-31301d27737a"/>
   </ModelRefInfoRepo.ModelRefInfoRoot>
 </MF0>

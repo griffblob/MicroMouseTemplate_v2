@@ -7,39 +7,95 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   4 \
+    NumChartData   12 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
       IsTestPoint  0\
     }\
     ChartData {\
-      Name         "minl"\
+      Name         "mindl"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2510:72-76"\
+      SrcLocation  "MicroMouseTemplate:2510:72-77"\
     }\
     ChartData {\
-      Name         "maxl"\
+      Name         "maxdl"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2510:123-127"\
+      SrcLocation  "MicroMouseTemplate:2510:126-131"\
     }\
     ChartData {\
-      Name         "minr"\
+      Name         "mindr"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2510:175-179"\
+      SrcLocation  "MicroMouseTemplate:2510:180-185"\
     }\
     ChartData {\
-      Name         "maxr"\
+      Name         "maxdr"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2510:226-230"\
+      SrcLocation  "MicroMouseTemplate:2510:234-239"\
+    }\
+    ChartData {\
+      Name         "minwl"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2510:291-296"\
+    }\
+    ChartData {\
+      Name         "maxwl"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2510:345-350"\
+    }\
+    ChartData {\
+      Name         "minwfr"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2510:400-406"\
+    }\
+    ChartData {\
+      Name         "maxwfr"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2510:457-463"\
+    }\
+    ChartData {\
+      Name         "minwfl"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2510:514-520"\
+    }\
+    ChartData {\
+      Name         "maxwfl"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2510:571-577"\
+    }\
+    ChartData {\
+      Name         "minwr"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2510:629-634"\
+    }\
+    ChartData {\
+      Name         "maxwr"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2510:683-688"\
     }\
   }
   %return ChartDataElements

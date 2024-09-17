@@ -9,7 +9,7 @@
  *
  * Model version                  : 3.8
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Tue Sep 17 12:15:37 2024
+ * C/C++ source code generated on : Tue Sep 17 15:09:47 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -102,9 +102,9 @@ typedef struct {
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  emxArray_real_T_8x8_MicroMous_T ADCOFF;/* '<Root>/MATLAB Function1' */
-  real_T prePAT[8];                    /* '<Root>/MATLAB Function1' */
-  real_T ADCON[8];                     /* '<Root>/MATLAB Function1' */
+  emxArray_real_T_8x8_MicroMous_T ADCOFF;/* '<Root>/Function Sense' */
+  real_T prePAT[8];                    /* '<Root>/Function Sense' */
+  real_T ADCON[8];                     /* '<Root>/Function Sense' */
   stm32cube_blocks_AnalogInput__T obj; /* '<S52>/Analog to Digital Converter' */
   stm32cube_blocks_PWMOutput_Mi_T obj_g;/* '<S48>/PWM Output' */
   stm32cube_blocks_PWMOutput_Mi_T obj_n;/* '<S46>/PWM Output' */
@@ -112,18 +112,26 @@ typedef struct {
   real_T RateTransition1_Buffer;       /* '<S55>/Rate Transition1' */
   real_T Rmem;                         /* '<S9>/Fowards Backwards' */
   real_T Lmem;                         /* '<S9>/Fowards Backwards' */
-  real_T preNoLED;                     /* '<Root>/MATLAB Function1' */
-  real_T minl;                         /* '<Root>/MATLAB Function' */
-  real_T maxl;                         /* '<Root>/MATLAB Function' */
-  real_T minr;                         /* '<Root>/MATLAB Function' */
-  real_T maxr;                         /* '<Root>/MATLAB Function' */
-  real_T c;                            /* '<S5>/MATLAB Function' */
-  real_T preError;                     /* '<Root>/Drive' */
-  real_T sumError;                     /* '<Root>/Drive' */
-  real_T error;                        /* '<Root>/Drive' */
-  real_T Dave;                         /* '<Root>/Drive' */
+  real_T c;                            /* '<S8>/MATLAB Function' */
+  real_T preNoLED;                     /* '<Root>/Function Sense' */
+  real_T preError;                     /* '<Root>/Function Follow Line' */
+  real_T sumError;                     /* '<Root>/Function Follow Line' */
+  real_T error;                        /* '<Root>/Function Follow Line' */
+  real_T Dave;                         /* '<Root>/Function Follow Line' */
+  real_T mindl;                        /* '<Root>/Function Calibration' */
+  real_T maxdl;                        /* '<Root>/Function Calibration' */
+  real_T mindr;                        /* '<Root>/Function Calibration' */
+  real_T maxdr;                        /* '<Root>/Function Calibration' */
+  real_T minwl;                        /* '<Root>/Function Calibration' */
+  real_T maxwl;                        /* '<Root>/Function Calibration' */
+  real_T minwfr;                       /* '<Root>/Function Calibration' */
+  real_T maxwfr;                       /* '<Root>/Function Calibration' */
+  real_T minwfl;                       /* '<Root>/Function Calibration' */
+  real_T maxwfl;                       /* '<Root>/Function Calibration' */
+  real_T minwr;                        /* '<Root>/Function Calibration' */
+  real_T maxwr;                        /* '<Root>/Function Calibration' */
   struct {
-    uint_T is_c2_MicroMouseTemplate:2; /* '<Root>/HelloMicroMouse!' */
+    uint_T is_c2_MicroMouseTemplate:3; /* '<Root>/HelloMicroMouse!' */
     uint_T is_active_c2_MicroMouseTemplate:1;/* '<Root>/HelloMicroMouse!' */
   } bitsForTID0;
 
@@ -134,9 +142,9 @@ typedef struct {
   uint8_T temporalCounter_i1;          /* '<Root>/HelloMicroMouse!' */
   boolean_T Rmem_not_empty;            /* '<S9>/Fowards Backwards' */
   boolean_T Lmem_not_empty;            /* '<S9>/Fowards Backwards' */
-  boolean_T prePAT_not_empty;          /* '<Root>/MATLAB Function1' */
-  boolean_T preNoLED_not_empty;        /* '<Root>/MATLAB Function1' */
-  boolean_T ADCOFF_not_empty;          /* '<Root>/MATLAB Function1' */
+  boolean_T prePAT_not_empty;          /* '<Root>/Function Sense' */
+  boolean_T preNoLED_not_empty;        /* '<Root>/Function Sense' */
+  boolean_T ADCOFF_not_empty;          /* '<Root>/Function Sense' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem6;/* '<S53>/MATLAB System1' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem5;/* '<S53>/MATLAB System1' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem4_c;/* '<S53>/MATLAB System1' */
@@ -179,14 +187,26 @@ struct P_MicroMouseTemplate_T_ {
   real_T DataStoreMemory1_InitialValue;/* Expression: 0
                                         * Referenced by: '<Root>/Data Store Memory1'
                                         */
-  int32_T DataStoreMemory2_InitialValue;
-                            /* Computed Parameter: DataStoreMemory2_InitialValue
-                             * Referenced by: '<S1>/Data Store Memory2'
-                             */
-  int32_T DataStoreMemory4_InitialValue;
-                            /* Computed Parameter: DataStoreMemory4_InitialValue
-                             * Referenced by: '<S1>/Data Store Memory4'
-                             */
+  real_T DataStoreMemory2_InitialValue;/* Expression: 0
+                                        * Referenced by: '<Root>/Data Store Memory2'
+                                        */
+  real_T DataStoreMemory3_InitialValue;/* Expression: 0
+                                        * Referenced by: '<Root>/Data Store Memory3'
+                                        */
+  real_T DataStoreMemory4_InitialValue;/* Expression: 0
+                                        * Referenced by: '<Root>/Data Store Memory4'
+                                        */
+  real_T DataStoreMemory5_InitialValue;/* Expression: 0
+                                        * Referenced by: '<Root>/Data Store Memory5'
+                                        */
+  int32_T DataStoreMemory2_InitialValue_b;
+                          /* Computed Parameter: DataStoreMemory2_InitialValue_b
+                           * Referenced by: '<S1>/Data Store Memory2'
+                           */
+  int32_T DataStoreMemory4_InitialValue_a;
+                          /* Computed Parameter: DataStoreMemory4_InitialValue_a
+                           * Referenced by: '<S1>/Data Store Memory4'
+                           */
   real32_T DataStoreMemory_InitialValue_j;
                            /* Computed Parameter: DataStoreMemory_InitialValue_j
                             * Referenced by: '<S11>/Data Store Memory'
@@ -340,13 +360,13 @@ extern volatile boolean_T runModel;
  *
  * '<Root>' : 'MicroMouseTemplate'
  * '<S1>'   : 'MicroMouseTemplate/Detections and Thresholds'
- * '<S2>'   : 'MicroMouseTemplate/Drive'
- * '<S3>'   : 'MicroMouseTemplate/GPIO for IR LEDs'
- * '<S4>'   : 'MicroMouseTemplate/HelloMicroMouse!'
- * '<S5>'   : 'MicroMouseTemplate/IR LED Pattern'
- * '<S6>'   : 'MicroMouseTemplate/MATLAB Function'
- * '<S7>'   : 'MicroMouseTemplate/MATLAB Function1'
- * '<S8>'   : 'MicroMouseTemplate/MATLAB Function2'
+ * '<S2>'   : 'MicroMouseTemplate/Function Calibration'
+ * '<S3>'   : 'MicroMouseTemplate/Function Follow Line'
+ * '<S4>'   : 'MicroMouseTemplate/Function Sense'
+ * '<S5>'   : 'MicroMouseTemplate/Function Sensor Anal'
+ * '<S6>'   : 'MicroMouseTemplate/GPIO for IR LEDs'
+ * '<S7>'   : 'MicroMouseTemplate/HelloMicroMouse!'
+ * '<S8>'   : 'MicroMouseTemplate/IR LED Pattern'
  * '<S9>'   : 'MicroMouseTemplate/Motors'
  * '<S10>'  : 'MicroMouseTemplate/Subsystem'
  * '<S11>'  : 'MicroMouseTemplate/Subsystem1'
