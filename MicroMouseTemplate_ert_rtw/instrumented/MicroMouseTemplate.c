@@ -9,7 +9,7 @@
  *
  * Model version                  : 3.8
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Tue Sep 17 15:09:47 2024
+ * C/C++ source code generated on : Tue Sep 17 16:15:38 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -264,10 +264,10 @@ static void MicroMous_PWMOutput_setupImpl_d(stm32cube_blocks_PWMOutput_Mi_T *obj
 /* Model step function for TID0 */
 void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
 {
+  real_T WelCalL;
+  real_T WelCalR;
   real_T rtb_Lb;
-  real_T rtb_Left;
   real_T rtb_Lf;
-  real_T rtb_Right;
   int32_T i;
   int32_T rtb_Left_f;
   int32_T rtb_Right_a;
@@ -319,9 +319,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
    */
   rtb_Lb = MicroMouseTemplate_B.MATLABSystem4.MATLABSystem3[0];
   for (rtb_Left_f = 0; rtb_Left_f < 9; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem4.MATLABSystem3[rtb_Left_f + 1];
-    if (rtb_Lb < rtb_Left) {
-      rtb_Lb = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem4.MATLABSystem3[rtb_Left_f + 1];
+    if (rtb_Lb < WelCalL) {
+      rtb_Lb = WelCalL;
     }
   }
 
@@ -333,11 +333,11 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
   /* MinMax: '<S53>/Min' incorporates:
    *  MATLABSystem: '<S53>/MATLAB System1'
    */
-  rtb_Right = MicroMouseTemplate_B.MATLABSystem1.MATLABSystem1[0];
+  WelCalR = MicroMouseTemplate_B.MATLABSystem1.MATLABSystem1[0];
   for (rtb_Left_f = 0; rtb_Left_f < 24; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem1.MATLABSystem1[rtb_Left_f + 1];
-    if (rtb_Right > rtb_Left) {
-      rtb_Right = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem1.MATLABSystem1[rtb_Left_f + 1];
+    if (WelCalR > WelCalL) {
+      WelCalR = WelCalL;
     }
   }
 
@@ -351,10 +351,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
    */
   rtb_Lb = MicroMouseTemplate_B.MATLABSystem1_ci.MATLABSystem1[0];
   for (rtb_Left_f = 0; rtb_Left_f < 24; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem1_ci.MATLABSystem1[rtb_Left_f +
-      1];
-    if (rtb_Lb < rtb_Left) {
-      rtb_Lb = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem1_ci.MATLABSystem1[rtb_Left_f + 1];
+    if (rtb_Lb < WelCalL) {
+      rtb_Lb = WelCalL;
     }
   }
 
@@ -369,9 +368,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
   MicroMouseTemplate_B.maxV =
     MicroMouseTemplate_B.MATLABSystem3_c.MATLABSystem1[0];
   for (rtb_Left_f = 0; rtb_Left_f < 24; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem3_c.MATLABSystem1[rtb_Left_f + 1];
-    if (MicroMouseTemplate_B.maxV < rtb_Left) {
-      MicroMouseTemplate_B.maxV = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem3_c.MATLABSystem1[rtb_Left_f + 1];
+    if (MicroMouseTemplate_B.maxV < WelCalL) {
+      MicroMouseTemplate_B.maxV = WelCalL;
     }
   }
 
@@ -386,9 +385,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
   MicroMouseTemplate_B.maxV_m =
     MicroMouseTemplate_B.MATLABSystem4_c.MATLABSystem1[0];
   for (rtb_Left_f = 0; rtb_Left_f < 24; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem4_c.MATLABSystem1[rtb_Left_f + 1];
-    if (MicroMouseTemplate_B.maxV_m < rtb_Left) {
-      MicroMouseTemplate_B.maxV_m = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem4_c.MATLABSystem1[rtb_Left_f + 1];
+    if (MicroMouseTemplate_B.maxV_m < WelCalL) {
+      MicroMouseTemplate_B.maxV_m = WelCalL;
     }
   }
 
@@ -402,9 +401,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
   MicroMouseTemplate_B.maxV_c =
     MicroMouseTemplate_B.MATLABSystem5.MATLABSystem1[0];
   for (rtb_Left_f = 0; rtb_Left_f < 24; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem5.MATLABSystem1[rtb_Left_f + 1];
-    if (MicroMouseTemplate_B.maxV_c < rtb_Left) {
-      MicroMouseTemplate_B.maxV_c = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem5.MATLABSystem1[rtb_Left_f + 1];
+    if (MicroMouseTemplate_B.maxV_c < WelCalL) {
+      MicroMouseTemplate_B.maxV_c = WelCalL;
     }
   }
 
@@ -417,9 +416,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
    */
   rtb_Lf = MicroMouseTemplate_B.MATLABSystem3.MATLABSystem3[0];
   for (rtb_Left_f = 0; rtb_Left_f < 9; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem3.MATLABSystem3[rtb_Left_f + 1];
-    if (rtb_Lf < rtb_Left) {
-      rtb_Lf = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem3.MATLABSystem3[rtb_Left_f + 1];
+    if (rtb_Lf < WelCalL) {
+      rtb_Lf = WelCalL;
     }
   }
 
@@ -433,9 +432,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
    */
   rtb_Lf = MicroMouseTemplate_B.MATLABSystem2.MATLABSystem1[0];
   for (rtb_Left_f = 0; rtb_Left_f < 24; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem2.MATLABSystem1[rtb_Left_f + 1];
-    if (rtb_Lf > rtb_Left) {
-      rtb_Lf = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem2.MATLABSystem1[rtb_Left_f + 1];
+    if (rtb_Lf > WelCalL) {
+      rtb_Lf = WelCalL;
     }
   }
 
@@ -447,59 +446,59 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
   ADC_H[0] = rtb_TmpRTBAtMaxofElementsOutpor;
 
   /* MinMax: '<S53>/Min' */
-  rtb_Left = fmod(floor(rtb_Right), 65536.0);
+  WelCalL = fmod(floor(WelCalR), 65536.0);
 
   /* DataStoreWrite: '<S50>/ADC_H Write' incorporates:
    *  MinMax: '<S53>/Min'
    */
-  ADC_H[1] = (uint16_T)(rtb_Left < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
-                        -rtb_Left : (int32_T)(uint16_T)rtb_Left);
+  ADC_H[1] = (uint16_T)(WelCalL < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
+                        -WelCalL : (int32_T)(uint16_T)WelCalL);
 
   /* MinMax: '<S53>/Max of Elements2' */
-  rtb_Left = fmod(floor(rtb_Lb), 65536.0);
+  WelCalL = fmod(floor(rtb_Lb), 65536.0);
 
   /* DataStoreWrite: '<S50>/ADC_H Write' incorporates:
    *  MinMax: '<S53>/Max of Elements2'
    */
-  ADC_H[2] = (uint16_T)(rtb_Left < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
-                        -rtb_Left : (int32_T)(uint16_T)rtb_Left);
+  ADC_H[2] = (uint16_T)(WelCalL < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
+                        -WelCalL : (int32_T)(uint16_T)WelCalL);
 
   /* MinMax: '<S53>/Max of Elements3' */
-  rtb_Left = fmod(floor(MicroMouseTemplate_B.maxV), 65536.0);
+  WelCalL = fmod(floor(MicroMouseTemplate_B.maxV), 65536.0);
 
   /* DataStoreWrite: '<S50>/ADC_H Write' incorporates:
    *  MinMax: '<S53>/Max of Elements3'
    */
-  ADC_H[3] = (uint16_T)(rtb_Left < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
-                        -rtb_Left : (int32_T)(uint16_T)rtb_Left);
+  ADC_H[3] = (uint16_T)(WelCalL < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
+                        -WelCalL : (int32_T)(uint16_T)WelCalL);
 
   /* MinMax: '<S53>/Max of Elements4' */
-  rtb_Left = fmod(floor(MicroMouseTemplate_B.maxV_m), 65536.0);
+  WelCalL = fmod(floor(MicroMouseTemplate_B.maxV_m), 65536.0);
 
   /* DataStoreWrite: '<S50>/ADC_H Write' incorporates:
    *  MinMax: '<S53>/Max of Elements4'
    */
-  ADC_H[4] = (uint16_T)(rtb_Left < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
-                        -rtb_Left : (int32_T)(uint16_T)rtb_Left);
+  ADC_H[4] = (uint16_T)(WelCalL < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
+                        -WelCalL : (int32_T)(uint16_T)WelCalL);
 
   /* MinMax: '<S53>/Max of Elements5' */
-  rtb_Left = fmod(floor(MicroMouseTemplate_B.maxV_c), 65536.0);
+  WelCalL = fmod(floor(MicroMouseTemplate_B.maxV_c), 65536.0);
 
   /* DataStoreWrite: '<S50>/ADC_H Write' incorporates:
    *  MinMax: '<S53>/Max of Elements5'
    */
-  ADC_H[5] = (uint16_T)(rtb_Left < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
-                        -rtb_Left : (int32_T)(uint16_T)rtb_Left);
+  ADC_H[5] = (uint16_T)(WelCalL < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
+                        -WelCalL : (int32_T)(uint16_T)WelCalL);
 
   /* MinMax: '<S53>/Min1' */
-  rtb_Left = fmod(floor(rtb_Lf), 65536.0);
+  WelCalL = fmod(floor(rtb_Lf), 65536.0);
 
   /* DataStoreWrite: '<S50>/ADC_H Write' incorporates:
    *  Constant: '<S50>/Constant'
    *  MinMax: '<S53>/Min1'
    */
-  ADC_H[6] = (uint16_T)(rtb_Left < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
-                        -rtb_Left : (int32_T)(uint16_T)rtb_Left);
+  ADC_H[6] = (uint16_T)(WelCalL < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
+                        -WelCalL : (int32_T)(uint16_T)WelCalL);
   ADC_H[7] = rtb_TmpRTBAtMaxofElements7Outpo;
   ADC_H[8] = MicroMouseTemplate_P.Constant_Value_b;
 
@@ -514,11 +513,11 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
   /* MinMax: '<S54>/Max of Elements9' incorporates:
    *  MATLABSystem: '<S54>/MATLAB System1'
    */
-  rtb_Right = MicroMouseTemplate_B.MATLABSystem1_c.MATLABSystem1[0];
+  WelCalR = MicroMouseTemplate_B.MATLABSystem1_c.MATLABSystem1[0];
   for (rtb_Left_f = 0; rtb_Left_f < 24; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem1_c.MATLABSystem1[rtb_Left_f + 1];
-    if (rtb_Right > rtb_Left) {
-      rtb_Right = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem1_c.MATLABSystem1[rtb_Left_f + 1];
+    if (WelCalR > WelCalL) {
+      WelCalR = WelCalL;
     }
   }
 
@@ -527,10 +526,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
    */
   rtb_Lf = MicroMouseTemplate_B.MATLABSystem1_ci.MATLABSystem1[0];
   for (rtb_Left_f = 0; rtb_Left_f < 24; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem1_ci.MATLABSystem1[rtb_Left_f +
-      1];
-    if (rtb_Lf > rtb_Left) {
-      rtb_Lf = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem1_ci.MATLABSystem1[rtb_Left_f + 1];
+    if (rtb_Lf > WelCalL) {
+      rtb_Lf = WelCalL;
     }
   }
 
@@ -539,9 +537,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
    */
   rtb_Lb = MicroMouseTemplate_B.MATLABSystem3_c.MATLABSystem1[0];
   for (rtb_Left_f = 0; rtb_Left_f < 24; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem3_c.MATLABSystem1[rtb_Left_f + 1];
-    if (rtb_Lb > rtb_Left) {
-      rtb_Lb = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem3_c.MATLABSystem1[rtb_Left_f + 1];
+    if (rtb_Lb > WelCalL) {
+      rtb_Lb = WelCalL;
     }
   }
 
@@ -551,9 +549,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
   MicroMouseTemplate_B.maxV =
     MicroMouseTemplate_B.MATLABSystem4_c.MATLABSystem1[0];
   for (rtb_Left_f = 0; rtb_Left_f < 24; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem4_c.MATLABSystem1[rtb_Left_f + 1];
-    if (MicroMouseTemplate_B.maxV > rtb_Left) {
-      MicroMouseTemplate_B.maxV = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem4_c.MATLABSystem1[rtb_Left_f + 1];
+    if (MicroMouseTemplate_B.maxV > WelCalL) {
+      MicroMouseTemplate_B.maxV = WelCalL;
     }
   }
 
@@ -563,9 +561,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
   MicroMouseTemplate_B.maxV_m =
     MicroMouseTemplate_B.MATLABSystem5.MATLABSystem1[0];
   for (rtb_Left_f = 0; rtb_Left_f < 24; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem5.MATLABSystem1[rtb_Left_f + 1];
-    if (MicroMouseTemplate_B.maxV_m > rtb_Left) {
-      MicroMouseTemplate_B.maxV_m = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem5.MATLABSystem1[rtb_Left_f + 1];
+    if (MicroMouseTemplate_B.maxV_m > WelCalL) {
+      MicroMouseTemplate_B.maxV_m = WelCalL;
     }
   }
 
@@ -580,9 +578,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
   MicroMouseTemplate_B.maxV_c =
     MicroMouseTemplate_B.MATLABSystem2_c.MATLABSystem1[0];
   for (rtb_Left_f = 0; rtb_Left_f < 24; rtb_Left_f++) {
-    rtb_Left = MicroMouseTemplate_B.MATLABSystem2_c.MATLABSystem1[rtb_Left_f + 1];
-    if (MicroMouseTemplate_B.maxV_c > rtb_Left) {
-      MicroMouseTemplate_B.maxV_c = rtb_Left;
+    WelCalL = MicroMouseTemplate_B.MATLABSystem2_c.MATLABSystem1[rtb_Left_f + 1];
+    if (MicroMouseTemplate_B.maxV_c > WelCalL) {
+      MicroMouseTemplate_B.maxV_c = WelCalL;
     }
   }
 
@@ -594,59 +592,59 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
   ADC_L[0] = rtb_TmpRTBAtMaxofElementsOutpor;
 
   /* MinMax: '<S54>/Max of Elements9' */
-  rtb_Left = fmod(floor(rtb_Right), 65536.0);
+  WelCalL = fmod(floor(WelCalR), 65536.0);
 
   /* DataStoreWrite: '<S50>/ADC_L Write' incorporates:
    *  MinMax: '<S54>/Max of Elements9'
    */
-  ADC_L[1] = (uint16_T)(rtb_Left < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
-                        -rtb_Left : (int32_T)(uint16_T)rtb_Left);
+  ADC_L[1] = (uint16_T)(WelCalL < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
+                        -WelCalL : (int32_T)(uint16_T)WelCalL);
 
   /* MinMax: '<S54>/Max of Elements10' */
-  rtb_Left = fmod(floor(rtb_Lf), 65536.0);
+  WelCalL = fmod(floor(rtb_Lf), 65536.0);
 
   /* DataStoreWrite: '<S50>/ADC_L Write' incorporates:
    *  MinMax: '<S54>/Max of Elements10'
    */
-  ADC_L[2] = (uint16_T)(rtb_Left < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
-                        -rtb_Left : (int32_T)(uint16_T)rtb_Left);
+  ADC_L[2] = (uint16_T)(WelCalL < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
+                        -WelCalL : (int32_T)(uint16_T)WelCalL);
 
   /* MinMax: '<S54>/Max of Elements11' */
-  rtb_Left = fmod(floor(rtb_Lb), 65536.0);
+  WelCalL = fmod(floor(rtb_Lb), 65536.0);
 
   /* DataStoreWrite: '<S50>/ADC_L Write' incorporates:
    *  MinMax: '<S54>/Max of Elements11'
    */
-  ADC_L[3] = (uint16_T)(rtb_Left < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
-                        -rtb_Left : (int32_T)(uint16_T)rtb_Left);
+  ADC_L[3] = (uint16_T)(WelCalL < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
+                        -WelCalL : (int32_T)(uint16_T)WelCalL);
 
   /* MinMax: '<S54>/Max of Elements12' */
-  rtb_Left = fmod(floor(MicroMouseTemplate_B.maxV), 65536.0);
+  WelCalL = fmod(floor(MicroMouseTemplate_B.maxV), 65536.0);
 
   /* DataStoreWrite: '<S50>/ADC_L Write' incorporates:
    *  MinMax: '<S54>/Max of Elements12'
    */
-  ADC_L[4] = (uint16_T)(rtb_Left < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
-                        -rtb_Left : (int32_T)(uint16_T)rtb_Left);
+  ADC_L[4] = (uint16_T)(WelCalL < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
+                        -WelCalL : (int32_T)(uint16_T)WelCalL);
 
   /* MinMax: '<S54>/Max of Elements13' */
-  rtb_Left = fmod(floor(MicroMouseTemplate_B.maxV_m), 65536.0);
+  WelCalL = fmod(floor(MicroMouseTemplate_B.maxV_m), 65536.0);
 
   /* DataStoreWrite: '<S50>/ADC_L Write' incorporates:
    *  MinMax: '<S54>/Max of Elements13'
    */
-  ADC_L[5] = (uint16_T)(rtb_Left < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
-                        -rtb_Left : (int32_T)(uint16_T)rtb_Left);
+  ADC_L[5] = (uint16_T)(WelCalL < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
+                        -WelCalL : (int32_T)(uint16_T)WelCalL);
 
   /* MinMax: '<S54>/Max of Elements14' */
-  rtb_Left = fmod(floor(MicroMouseTemplate_B.maxV_c), 65536.0);
+  WelCalL = fmod(floor(MicroMouseTemplate_B.maxV_c), 65536.0);
 
   /* DataStoreWrite: '<S50>/ADC_L Write' incorporates:
    *  Constant: '<S50>/Constant1'
    *  MinMax: '<S54>/Max of Elements14'
    */
-  ADC_L[6] = (uint16_T)(rtb_Left < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
-                        -rtb_Left : (int32_T)(uint16_T)rtb_Left);
+  ADC_L[6] = (uint16_T)(WelCalL < 0.0 ? (int32_T)(uint16_T)-(int16_T)(uint16_T)
+                        -WelCalL : (int32_T)(uint16_T)WelCalL);
   ADC_L[7] = rtb_TmpRTBAtMaxofElements7Outpo;
   ADC_L[8] = MicroMouseTemplate_P.Constant1_Value;
 
@@ -1001,7 +999,7 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
         MicroMouseTemplate_B.CastToDouble_m[3];
     }
 
-    if (MicroMouseTemplate_B.CastToDouble_m[3] < MicroMouseTemplate_DW.mindr) {
+    if (MicroMouseTemplate_B.CastToDouble_m[3] < MicroMouseTemplate_DW.minwr) {
       MicroMouseTemplate_DW.minwr = MicroMouseTemplate_DW.minwr * 0.8 + 0.2 *
         MicroMouseTemplate_B.CastToDouble_m[3];
     }
@@ -1011,7 +1009,7 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
         MicroMouseTemplate_B.CastToDouble_m[4];
     }
 
-    if (MicroMouseTemplate_B.CastToDouble_m[4] < MicroMouseTemplate_DW.mindl) {
+    if (MicroMouseTemplate_B.CastToDouble_m[4] < MicroMouseTemplate_DW.minwl) {
       MicroMouseTemplate_DW.minwl = MicroMouseTemplate_DW.minwl * 0.8 + 0.2 *
         MicroMouseTemplate_B.CastToDouble_m[4];
     }
@@ -1035,7 +1033,30 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
       MicroMouseTemplate_DW.minwfl = MicroMouseTemplate_DW.minwfl * 0.8 + 0.2 *
         MicroMouseTemplate_B.CastToDouble_m[6];
     }
+
+    if (MicroMouseTemplate_B.CastToDouble_m[0] > MicroMouseTemplate_DW.maxwer) {
+      MicroMouseTemplate_DW.maxwer = MicroMouseTemplate_DW.maxwer * 0.8 + 0.2 *
+        MicroMouseTemplate_B.CastToDouble_m[0];
+    }
+
+    if (MicroMouseTemplate_B.CastToDouble_m[0] < MicroMouseTemplate_DW.minwer) {
+      MicroMouseTemplate_DW.minwer = MicroMouseTemplate_DW.minwer * 0.8 + 0.2 *
+        MicroMouseTemplate_B.CastToDouble_m[0];
+    }
+
+    if (MicroMouseTemplate_B.CastToDouble_m[7] > MicroMouseTemplate_DW.maxwel) {
+      MicroMouseTemplate_DW.maxwel = MicroMouseTemplate_DW.maxwel * 0.8 + 0.2 *
+        MicroMouseTemplate_B.CastToDouble_m[7];
+    }
+
+    if (MicroMouseTemplate_B.CastToDouble_m[7] < MicroMouseTemplate_DW.minwel) {
+      MicroMouseTemplate_DW.minwel = MicroMouseTemplate_DW.minwel * 0.8 + 0.2 *
+        MicroMouseTemplate_B.CastToDouble_m[7];
+    }
   }
+
+  WelCalL = (MicroMouseTemplate_DW.minwel + MicroMouseTemplate_DW.maxwel) / 2.0;
+  WelCalR = (MicroMouseTemplate_DW.minwer + MicroMouseTemplate_DW.maxwer) / 2.0;
 
   /* MATLAB Function: '<Root>/Function Sensor Anal' incorporates:
    *  MATLAB Function: '<Root>/Function Calibration'
@@ -1054,16 +1075,21 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
     MicroMouseTemplate_B.CastToDouble[5] = 1U;
   }
 
-  if (MicroMouseTemplate_B.CastToDouble_m[1] > (MicroMouseTemplate_DW.minwfr +
-       MicroMouseTemplate_DW.maxwfr) / 2.0) {
-    MicroMouseTemplate_B.CastToDouble[1] = 1U;
+  if (MicroMouseTemplate_B.CastToDouble_m[7] > WelCalL * 1.1) {
+    MicroMouseTemplate_DW.sens8 = 1.0;
+  } else if (MicroMouseTemplate_B.CastToDouble_m[7] < WelCalL * 0.9) {
+    MicroMouseTemplate_DW.sens8 = 0.0;
   }
 
-  /* End of MATLAB Function: '<Root>/Function Sensor Anal' */
+  if (MicroMouseTemplate_B.CastToDouble_m[0] > WelCalR * 1.1) {
+    MicroMouseTemplate_DW.sens1 = 1.0;
+  } else if (MicroMouseTemplate_B.CastToDouble_m[0] < WelCalR * 0.9) {
+    MicroMouseTemplate_DW.sens1 = 0.0;
+  }
 
   /* MATLAB Function: '<Root>/Function Follow Line' */
-  rtb_Left = 0.0;
-  rtb_Right = 0.0;
+  WelCalL = 0.0;
+  WelCalR = 0.0;
   if (MicroMouseTemplate_B.Drive == 1.0) {
     if (MicroMouseTemplate_B.CastToDouble[2] == 1) {
       if (MicroMouseTemplate_B.CastToDouble[5] == 0) {
@@ -1091,69 +1117,68 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
     MicroMouseTemplate_DW.sumError -= 0.005 * MicroMouseTemplate_DW.sumError;
     MicroMouseTemplate_DW.Dave = (MicroMouseTemplate_DW.error -
       MicroMouseTemplate_DW.preError) + 0.8 * MicroMouseTemplate_DW.Dave;
-    rtb_Right = (30.0 * MicroMouseTemplate_DW.error +
-                 MicroMouseTemplate_DW.sumError) + 100.0 *
+    WelCalR = (30.0 * MicroMouseTemplate_DW.error +
+               MicroMouseTemplate_DW.sumError) + 100.0 *
       MicroMouseTemplate_DW.Dave;
     MicroMouseTemplate_DW.preError = MicroMouseTemplate_DW.error;
-    if (100.0 - rtb_Right >= -100.0) {
-      rtb_Left = 100.0 - rtb_Right;
+    if (100.0 - WelCalR >= -100.0) {
+      WelCalL = 100.0 - WelCalR;
     } else {
-      rtb_Left = -100.0;
+      WelCalL = -100.0;
     }
 
-    if (rtb_Left > 100.0) {
-      rtb_Left = 100.0;
+    if (WelCalL > 100.0) {
+      WelCalL = 100.0;
     }
 
-    if (rtb_Right + 100.0 >= -100.0) {
-      rtb_Right += 100.0;
+    if (WelCalR + 100.0 >= -100.0) {
+      WelCalR += 100.0;
     } else {
-      rtb_Right = -100.0;
+      WelCalR = -100.0;
     }
 
-    if (rtb_Right > 100.0) {
-      rtb_Right = 100.0;
+    if (WelCalR > 100.0) {
+      WelCalR = 100.0;
     }
 
     if ((MicroMouseTemplate_DW.error == 0.0) &&
         (MicroMouseTemplate_B.CastToDouble[2] == 1) &&
         (MicroMouseTemplate_B.CastToDouble[5] == 1)) {
-      rtb_Left = -50.0;
-      rtb_Right = -50.0;
+      WelCalL = -50.0;
+      WelCalR = -50.0;
     }
   }
 
   /* End of MATLAB Function: '<Root>/Function Follow Line' */
 
   /* Sum: '<Root>/Add1' */
-  rtb_Left += (real_T)rtb_Left_f;
+  WelCalL += (real_T)rtb_Left_f;
 
   /* Sum: '<Root>/Add' */
-  rtb_Right += (real_T)rtb_Right_a;
+  WelCalR += (real_T)rtb_Right_a;
 
   /* MATLAB Function: '<S9>/Fowards Backwards' */
   if (!MicroMouseTemplate_DW.Rmem_not_empty) {
-    MicroMouseTemplate_DW.Rmem = rtb_Left;
+    MicroMouseTemplate_DW.Rmem = WelCalL;
     MicroMouseTemplate_DW.Rmem_not_empty = true;
   }
 
   if (!MicroMouseTemplate_DW.Lmem_not_empty) {
-    MicroMouseTemplate_DW.Lmem = rtb_Right;
+    MicroMouseTemplate_DW.Lmem = WelCalR;
     MicroMouseTemplate_DW.Lmem_not_empty = true;
   }
 
-  MicroMouseTemplate_DW.Rmem = 0.6 * MicroMouseTemplate_DW.Rmem + 0.4 * rtb_Left;
-  MicroMouseTemplate_DW.Lmem = 0.6 * MicroMouseTemplate_DW.Lmem + 0.4 *
-    rtb_Right;
+  MicroMouseTemplate_DW.Rmem = 0.6 * MicroMouseTemplate_DW.Rmem + 0.4 * WelCalL;
+  MicroMouseTemplate_DW.Lmem = 0.6 * MicroMouseTemplate_DW.Lmem + 0.4 * WelCalR;
   if (MicroMouseTemplate_DW.Rmem > 10.0) {
-    rtb_Left = MicroMouseTemplate_DW.Rmem / 3.0 + 66.0;
-    rtb_Right = 0.0;
+    WelCalL = MicroMouseTemplate_DW.Rmem / 3.0 + 66.0;
+    WelCalR = 0.0;
   } else if (MicroMouseTemplate_DW.Rmem < -10.0) {
-    rtb_Left = 0.0;
-    rtb_Right = fabs(MicroMouseTemplate_DW.Rmem / 3.0 - 66.0);
+    WelCalL = 0.0;
+    WelCalR = fabs(MicroMouseTemplate_DW.Rmem / 3.0 - 66.0);
   } else {
-    rtb_Left = 0.0;
-    rtb_Right = 0.0;
+    WelCalL = 0.0;
+    WelCalR = 0.0;
   }
 
   if (MicroMouseTemplate_DW.Lmem > 10.0) {
@@ -1171,9 +1196,9 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
 
   /* MATLABSystem: '<S46>/PWM Output' */
   setDutyCycleInPercentageChannel3(MicroMouseTemplate_DW.obj_n.TimerHandle,
-    rtb_Left);
+    WelCalL);
   setDutyCycleInPercentageChannel4(MicroMouseTemplate_DW.obj_n.TimerHandle,
-    rtb_Right);
+    WelCalR);
 
   /* MATLABSystem: '<S48>/PWM Output' */
   setDutyCycleInPercentageChannel1(MicroMouseTemplate_DW.obj_g.TimerHandle,
@@ -1196,9 +1221,11 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
 
   /* End of MATLABSystem: '<S44>/Digital Port Write' */
 
-  /* MATLABSystem: '<S63>/Digital Port Write' */
+  /* MATLABSystem: '<S63>/Digital Port Write' incorporates:
+   *  MATLAB Function: '<Root>/Function Sensor Anal'
+   */
   MicroMouseTemplate_B.portNameLoc = GPIOC;
-  if (MicroMouseTemplate_B.CastToDouble[1] != 0) {
+  if (MicroMouseTemplate_DW.sens1 != 0.0) {
     i = 8192;
   } else {
     i = 0;
@@ -1211,20 +1238,14 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.01s, 0.0s] */
 
   /* MATLABSystem: '<S65>/Digital Port Write' */
   MicroMouseTemplate_B.portNameLoc = GPIOC;
-  if (MicroMouseTemplate_B.CastToDouble[2] != 0) {
-    i = 16384;
-  } else {
-    i = 0;
-  }
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 16384U);
 
-  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, (uint32_T)i);
-  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 16384U);
-
-  /* End of MATLABSystem: '<S65>/Digital Port Write' */
-
-  /* MATLABSystem: '<S67>/Digital Port Write' */
+  /* MATLABSystem: '<S67>/Digital Port Write' incorporates:
+   *  MATLAB Function: '<Root>/Function Sensor Anal'
+   */
   MicroMouseTemplate_B.portNameLoc = GPIOC;
-  if (MicroMouseTemplate_B.CastToDouble[5] != 0) {
+  if (MicroMouseTemplate_DW.sens8 != 0.0) {
     i = 32768;
   } else {
     i = 0;
@@ -1444,6 +1465,8 @@ void MicroMouseTemplate_initialize(void)
     MicroMouseTemplate_DW.minwfr = 3.0;
     MicroMouseTemplate_DW.minwfl = 3.0;
     MicroMouseTemplate_DW.minwr = 3.0;
+    MicroMouseTemplate_DW.minwer = 3.0;
+    MicroMouseTemplate_DW.minwel = 3.0;
     MicroMouseTemplate_DW.ADCOFF.size[1] = 0;
 
     /* Start for MATLABSystem: '<S52>/Analog to Digital Converter' */

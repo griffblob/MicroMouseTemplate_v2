@@ -9,7 +9,7 @@
  *
  * Model version                  : 3.8
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Tue Sep 17 15:09:47 2024
+ * C/C++ source code generated on : Tue Sep 17 16:15:38 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -113,6 +113,8 @@ typedef struct {
   real_T Rmem;                         /* '<S9>/Fowards Backwards' */
   real_T Lmem;                         /* '<S9>/Fowards Backwards' */
   real_T c;                            /* '<S8>/MATLAB Function' */
+  real_T sens1;                        /* '<Root>/Function Sensor Anal' */
+  real_T sens8;                        /* '<Root>/Function Sensor Anal' */
   real_T preNoLED;                     /* '<Root>/Function Sense' */
   real_T preError;                     /* '<Root>/Function Follow Line' */
   real_T sumError;                     /* '<Root>/Function Follow Line' */
@@ -130,6 +132,10 @@ typedef struct {
   real_T maxwfl;                       /* '<Root>/Function Calibration' */
   real_T minwr;                        /* '<Root>/Function Calibration' */
   real_T maxwr;                        /* '<Root>/Function Calibration' */
+  real_T minwer;                       /* '<Root>/Function Calibration' */
+  real_T maxwer;                       /* '<Root>/Function Calibration' */
+  real_T minwel;                       /* '<Root>/Function Calibration' */
+  real_T maxwel;                       /* '<Root>/Function Calibration' */
   struct {
     uint_T is_c2_MicroMouseTemplate:3; /* '<Root>/HelloMicroMouse!' */
     uint_T is_active_c2_MicroMouseTemplate:1;/* '<Root>/HelloMicroMouse!' */
@@ -198,6 +204,12 @@ struct P_MicroMouseTemplate_T_ {
                                         */
   real_T DataStoreMemory5_InitialValue;/* Expression: 0
                                         * Referenced by: '<Root>/Data Store Memory5'
+                                        */
+  real_T DataStoreMemory6_InitialValue;/* Expression: 0
+                                        * Referenced by: '<Root>/Data Store Memory6'
+                                        */
+  real_T DataStoreMemory7_InitialValue;/* Expression: 0
+                                        * Referenced by: '<Root>/Data Store Memory7'
                                         */
   int32_T DataStoreMemory2_InitialValue_b;
                           /* Computed Parameter: DataStoreMemory2_InitialValue_b

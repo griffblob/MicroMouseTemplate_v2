@@ -9,7 +9,7 @@
  *
  * Model version                  : 3.8
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Tue Sep 17 15:09:47 2024
+ * C/C++ source code generated on : Tue Sep 17 16:15:38 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -58,6 +58,16 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
 
   /* Expression: 0
    * Referenced by: '<Root>/Data Store Memory5'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/Data Store Memory6'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/Data Store Memory7'
    */
   0.0,
 
