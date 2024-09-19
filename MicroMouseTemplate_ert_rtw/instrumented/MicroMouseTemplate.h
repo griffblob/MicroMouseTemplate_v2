@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.8
+ * Model version                  : 3.10
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Tue Sep 17 16:15:38 2024
+ * C/C++ source code generated on : Thu Sep 19 16:03:55 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -77,10 +77,11 @@ typedef struct {
 
 /* Block signals (default storage) */
 typedef struct {
-  real_T CastToDouble_m[8];            /* '<S10>/Cast To Double' */
-  uint16_T CastToDouble[8];            /* '<S55>/Cast To Double' */
+  real_T CastToDouble[8];              /* '<S55>/Cast To Double' */
+  real_T SensorDif[8];                 /* '<Root>/Function Sense' */
   uint16_T Flip[8];                    /* '<S10>/Flip' */
   GPIO_TypeDef * portNameLoc;
+  int8_T TmpSignalConversionAtSFunct[8];/* '<Root>/Function Sense' */
   real_T Calibrate;                    /* '<Root>/HelloMicroMouse!' */
   real_T Drive;                        /* '<Root>/HelloMicroMouse!' */
   real_T maxV;
@@ -104,6 +105,7 @@ typedef struct {
 typedef struct {
   emxArray_real_T_8x8_MicroMous_T ADCOFF;/* '<Root>/Function Sense' */
   real_T prePAT[8];                    /* '<Root>/Function Sense' */
+  real_T preDif[8];                    /* '<Root>/Function Sense' */
   real_T ADCON[8];                     /* '<Root>/Function Sense' */
   stm32cube_blocks_AnalogInput__T obj; /* '<S52>/Analog to Digital Converter' */
   stm32cube_blocks_PWMOutput_Mi_T obj_g;/* '<S48>/PWM Output' */
@@ -113,8 +115,6 @@ typedef struct {
   real_T Rmem;                         /* '<S9>/Fowards Backwards' */
   real_T Lmem;                         /* '<S9>/Fowards Backwards' */
   real_T c;                            /* '<S8>/MATLAB Function' */
-  real_T sens1;                        /* '<Root>/Function Sensor Anal' */
-  real_T sens8;                        /* '<Root>/Function Sensor Anal' */
   real_T preNoLED;                     /* '<Root>/Function Sense' */
   real_T preError;                     /* '<Root>/Function Follow Line' */
   real_T sumError;                     /* '<Root>/Function Follow Line' */
