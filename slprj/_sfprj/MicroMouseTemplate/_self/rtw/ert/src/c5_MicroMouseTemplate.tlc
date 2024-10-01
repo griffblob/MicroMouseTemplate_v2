@@ -18,14 +18,14 @@
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2513:204-209"\
+      SrcLocation  "MicroMouseTemplate:2513:212-217"\
     }\
     ChartData {\
       Name         "sens8"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2513:256-261"\
+      SrcLocation  "MicroMouseTemplate:2513:264-269"\
     }\
   }
   %return ChartDataElements

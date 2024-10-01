@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.10
+ * Model version                  : 3.12
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Thu Sep 19 16:03:55 2024
+ * C/C++ source code generated on : Wed Oct  2 01:22:50 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -84,9 +84,12 @@ typedef struct {
   int8_T TmpSignalConversionAtSFunct[8];/* '<Root>/Function Sense' */
   real_T Calibrate;                    /* '<Root>/HelloMicroMouse!' */
   real_T Drive;                        /* '<Root>/HelloMicroMouse!' */
+  real_T Left;                         /* '<Root>/HelloMicroMouse!' */
+  real_T Right;                        /* '<Root>/HelloMicroMouse!' */
   real_T maxV;
   real_T maxV_m;
   real_T maxV_c;
+  real_T Add1;                         /* '<Root>/Add1' */
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem6;/* '<S53>/MATLAB System1' */
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem5;/* '<S53>/MATLAB System1' */
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem4_c;/* '<S53>/MATLAB System1' */
@@ -112,14 +115,22 @@ typedef struct {
   stm32cube_blocks_PWMOutput_Mi_T obj_n;/* '<S46>/PWM Output' */
   real_T RateTransition_Buffer;        /* '<S55>/Rate Transition' */
   real_T RateTransition1_Buffer;       /* '<S55>/Rate Transition1' */
-  real_T Rmem;                         /* '<S9>/Fowards Backwards' */
-  real_T Lmem;                         /* '<S9>/Fowards Backwards' */
+  real_T LineValL;                     /* '<Root>/Data Store Memory' */
+  real_T LineValR;                     /* '<Root>/Data Store Memory1' */
+  real_T WalCalL;                      /* '<Root>/Data Store Memory2' */
+  real_T WalCalR;                      /* '<Root>/Data Store Memory3' */
+  real_T WalCalFl;                     /* '<Root>/Data Store Memory4' */
+  real_T WalCalFr;                     /* '<Root>/Data Store Memory5' */
+  real_T WelCalR;                      /* '<Root>/Data Store Memory6' */
+  real_T WelCalL;                      /* '<Root>/Data Store Memory7' */
   real_T c;                            /* '<S8>/MATLAB Function' */
+  real_T preError;                     /* '<Root>/HelloMicroMouse!' */
+  real_T sumError;                     /* '<Root>/HelloMicroMouse!' */
+  real_T error;                        /* '<Root>/HelloMicroMouse!' */
+  real_T Dave;                         /* '<Root>/HelloMicroMouse!' */
+  real_T sens1;                        /* '<Root>/Function Sensor Anal' */
+  real_T sens8;                        /* '<Root>/Function Sensor Anal' */
   real_T preNoLED;                     /* '<Root>/Function Sense' */
-  real_T preError;                     /* '<Root>/Function Follow Line' */
-  real_T sumError;                     /* '<Root>/Function Follow Line' */
-  real_T error;                        /* '<Root>/Function Follow Line' */
-  real_T Dave;                         /* '<Root>/Function Follow Line' */
   real_T mindl;                        /* '<Root>/Function Calibration' */
   real_T maxdl;                        /* '<Root>/Function Calibration' */
   real_T mindr;                        /* '<Root>/Function Calibration' */
@@ -146,8 +157,6 @@ typedef struct {
   volatile uint16_T TmpRTBAtMaxofElements8Outport1_;/* synthesized block */
   volatile uint16_T TmpRTBAtMaxofElements15Outport1;/* synthesized block */
   uint8_T temporalCounter_i1;          /* '<Root>/HelloMicroMouse!' */
-  boolean_T Rmem_not_empty;            /* '<S9>/Fowards Backwards' */
-  boolean_T Lmem_not_empty;            /* '<S9>/Fowards Backwards' */
   boolean_T prePAT_not_empty;          /* '<Root>/Function Sense' */
   boolean_T preNoLED_not_empty;        /* '<Root>/Function Sense' */
   boolean_T ADCOFF_not_empty;          /* '<Root>/Function Sense' */

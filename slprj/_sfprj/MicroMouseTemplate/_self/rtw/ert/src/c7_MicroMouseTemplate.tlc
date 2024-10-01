@@ -7,18 +7,11 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   4 \
+    NumChartData   2 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
       IsTestPoint  0\
-    }\
-    ChartData {\
-      Name         "Rmem"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "MicroMouseTemplate:160:2524:45-49"\
     }\
     ChartData {\
       Name         "Rmem_not_empty"\
@@ -26,13 +19,6 @@
       SFName       ""\
       Path         ""\
       SrcLocation  "MicroMouseTemplate:160:2524:45-49"\
-    }\
-    ChartData {\
-      Name         "Lmem"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "MicroMouseTemplate:160:2524:61-65"\
     }\
     ChartData {\
       Name         "Lmem_not_empty"\
