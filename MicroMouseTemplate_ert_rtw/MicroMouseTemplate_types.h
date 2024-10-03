@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.12
+ * Model version                  : 3.20
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Wed Oct  2 01:22:50 2024
+ * C/C++ source code generated on : Thu Oct  3 03:42:29 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -77,7 +77,7 @@ typedef struct tag_S5MMpcz8vT0FlmhmEl4q5C stm32cube_blocks_DigitalPortW_T;
 
 #endif                             /* typedef_stm32cube_blocks_DigitalPortW_T */
 
-/* Custom Type definition for MATLABSystem: '<S48>/PWM Output' */
+/* Custom Type definition for MATLABSystem: '<S47>/PWM Output' */
 #include "stm_timer_ll.h"
 #include "stm_timer_ll.h"
 #ifndef struct_tag_C3ug75osl8w3UN1OXa3ipB
@@ -100,7 +100,7 @@ typedef struct tag_C3ug75osl8w3UN1OXa3ipB stm32cube_blocks_PWMOutput_Mi_T;
 
 #endif                             /* typedef_stm32cube_blocks_PWMOutput_Mi_T */
 
-/* Custom Type definition for MATLABSystem: '<S52>/Analog to Digital Converter' */
+/* Custom Type definition for MATLABSystem: '<S51>/Analog to Digital Converter' */
 #include "stm_adc_ll.h"
 #include "stm_adc_ll.h"
 #ifndef struct_tag_wiywjhRn0JhvylthmapQgB
@@ -159,10 +159,10 @@ typedef struct emxArray_real_T_8x8 emxArray_real_T_8x8_MicroMous_T;
 
 #endif                             /* typedef_emxArray_real_T_8x8_MicroMous_T */
 
-/* Parameters for system: '<S53>/MATLAB System1' */
+/* Parameters for system: '<S52>/MATLAB System1' */
 typedef struct P_MATLABSystem1_MicroMouseTem_T_ P_MATLABSystem1_MicroMouseTem_T;
 
-/* Parameters for system: '<S53>/MATLAB System3' */
+/* Parameters for system: '<S52>/MATLAB System3' */
 typedef struct P_MATLABSystem3_MicroMouseTem_T_ P_MATLABSystem3_MicroMouseTem_T;
 
 /* Parameters (default storage) */

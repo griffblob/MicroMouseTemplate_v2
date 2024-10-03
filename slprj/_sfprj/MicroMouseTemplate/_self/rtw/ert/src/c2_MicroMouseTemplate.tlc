@@ -7,11 +7,81 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   7 \
+    NumChartData   16 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
       IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "Turn"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "Turn"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "pos"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "pos"\
+      SrcLocation  ""\
+      Dimensions   [2]\
+    }\
+    ChartData {\
+      Name         "dest"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "dest"\
+      SrcLocation  ""\
+      Dimensions   [2]\
+    }\
+    ChartData {\
+      Name         "direction"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "direction"\
+      SrcLocation  ""\
+      Dimensions   [4]\
+    }\
+    ChartData {\
+      Name         "connection"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "connection"\
+      SrcLocation  ""\
+      Dimensions   [168,4]\
+    }\
+    ChartData {\
+      Name         "path"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "path"\
+      SrcLocation  ""\
+      Dimensions   [200,2]\
+    }\
+    ChartData {\
+      Name         "q_data"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "q"\
+      SrcLocation  ""\
+      Dimensions   [400]\
+    }\
+    ChartData {\
+      Name         "q_sizes"\
+      Description  "SizeInfo"\
+      SFName       ""\
+      Path         "q"\
+      SrcLocation  ""\
+      Dimensions   [2]\
+    }\
+    ChartData {\
+      Name         "pathend"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "pathend"\
+      SrcLocation  ""\
     }\
     ChartData {\
       Name         "is_active_c2_MicroMouseTemplate"\
