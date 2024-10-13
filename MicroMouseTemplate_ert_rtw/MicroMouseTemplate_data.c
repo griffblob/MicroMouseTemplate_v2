@@ -8,10 +8,6 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
 
   0.0,
 
-  1.0,
-
-  0.0,
-
   0.0,
 
   0.0,

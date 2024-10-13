@@ -58,6 +58,7 @@ typedef struct {
   real_T CastToDouble[8];
   real_T CastToDouble_m[8];
   uint16_T Flip[8];
+  int8_T a[8];
   GPIO_TypeDef * portNameLoc;
   real_T Calibrate;
   real_T Drive;
@@ -65,15 +66,13 @@ typedef struct {
   real_T Right;
   real_T maxV;
   real_T maxV_m;
+  real_T maxV_c;
   real_T Rf;
   real_T Rb;
   real_T Lf;
   real_T Lb;
-  real_T cross;
-  int8_T a[6];
-  int32_T k;
+  int8_T a__1[4];
   uint32_T pinReadLoc;
-  uint32_T pinReadLoc_c;
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem6;
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem5;
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem4_c;
@@ -90,9 +89,9 @@ typedef struct {
 
 typedef struct {
   int16_T connection[672];
-  emxArray_real_T_8x8_MicroMous_T ADCOFF;
   real_T prePAT[8];
   real_T preDif[8];
+  real_T ADCOFF[8];
   real_T ADCON[8];
   stm32cube_blocks_AnalogInput__T obj;
   stm32cube_blocks_PWMOutput_Mi_T obj_g;
@@ -109,23 +108,21 @@ typedef struct {
   real_T WelCalL;
   real_T sum;
   real_T Turn;
-  real_T desA;
   real_T DesA;
   real_T res;
+  real_T Next;
+  real_T Setpoint;
   real_T preError;
   real_T sumError;
   real_T error;
   real_T Dave;
   real_T preError_e;
-  real_T preSide;
-  real_T sumError_i;
-  real_T error_h;
-  real_T Dave_m;
-  real_T preError_j;
-  real_T sumError_h;
-  real_T Dave_a;
+  real_T sumError_g;
+  real_T error_d;
+  real_T Dave_o;
+  real_T preError_m;
+  real_T sumError_m;
   real_T c;
-  real_T preNoLED;
   real_T mindl;
   real_T maxdl;
   real_T mindr;
@@ -148,21 +145,16 @@ typedef struct {
   int16_T dest[2];
   int16_T start[2];
   struct {
-    uint_T is_c2_MicroMouseTemplate:5;
-    uint_T is_Hehehehe:2;
+    uint_T is_c2_MicroMouseTemplate:4;
     uint_T is_active_c2_MicroMouseTemplate:1;
   } bitsForTID0;
 
-  int16_T pathend;
   volatile uint16_T TmpRTBAtMaxofElementsOutport1_B;
   volatile uint16_T TmpRTBAtMaxofElements7Outport1_;
   volatile uint16_T TmpRTBAtMaxofElements8Outport1_;
   volatile uint16_T TmpRTBAtMaxofElements15Outport1;
   uint16_T temporalCounter_i1;
-  uint8_T temporalCounter_i2;
   boolean_T prePAT_not_empty;
-  boolean_T preNoLED_not_empty;
-  boolean_T ADCOFF_not_empty;
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem6;
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem5;
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem4_c;
@@ -187,8 +179,6 @@ struct P_MATLABSystem3_MicroMouseTem_T_ {
 
 struct P_MicroMouseTemplate_T_ {
   real_T Constant_Value;
-  real_T Constant_Value_l;
-  real_T Switch_Threshold;
   real_T Constant_Value_i;
   real_T DataStoreMemory_InitialValue;
   real_T DataStoreMemory1_InitialValue;

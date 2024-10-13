@@ -120,24 +120,6 @@ typedef struct tag_6dsyvroagB27OCKFoJuL7 stm32cube_blocks_AnalogInput__T;
 
 #endif
 
-#ifndef struct_emxArray_real_T_8x8
-#define struct_emxArray_real_T_8x8
-
-struct emxArray_real_T_8x8
-{
-  real_T data[64];
-  int32_T size[2];
-};
-
-#endif
-
-#ifndef typedef_emxArray_real_T_8x8_MicroMous_T
-#define typedef_emxArray_real_T_8x8_MicroMous_T
-
-typedef struct emxArray_real_T_8x8 emxArray_real_T_8x8_MicroMous_T;
-
-#endif
-
 typedef struct P_MATLABSystem1_MicroMouseTem_T_ P_MATLABSystem1_MicroMouseTem_T;
 typedef struct P_MATLABSystem3_MicroMouseTem_T_ P_MATLABSystem3_MicroMouseTem_T;
 typedef struct P_MicroMouseTemplate_T_ P_MicroMouseTemplate_T;

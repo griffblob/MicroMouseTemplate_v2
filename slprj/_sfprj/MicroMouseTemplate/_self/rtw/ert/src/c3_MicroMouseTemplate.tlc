@@ -18,7 +18,7 @@
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2072:2507:57-58"\
+      SrcLocation  "MicroMouseTemplate:2072:2507:55-56"\
     }\
   }
   %return ChartDataElements

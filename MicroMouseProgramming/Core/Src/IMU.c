@@ -77,9 +77,9 @@ float readAccel(short axis){
 }
 
 float readGyro(short axis){
-    gyro_x = signNumber16(ReadMem(IMU_ADDRESS,IMU_GYRO_DATA_ADDRESS  ))/131.0f; //because full range sensitivity
-    gyro_y = signNumber16(ReadMem(IMU_ADDRESS,IMU_GYRO_DATA_ADDRESS+2))/131.0f;
-    gyro_z = signNumber16(ReadMem(IMU_ADDRESS,IMU_GYRO_DATA_ADDRESS+4))/131.0f;
+    gyro_x = signNumber16(ReadMem(IMU_ADDRESS,IMU_GYRO_DATA_ADDRESS  ))/32.8f; //because full range sensitivity
+    gyro_y = signNumber16(ReadMem(IMU_ADDRESS,IMU_GYRO_DATA_ADDRESS+2))/32.8f;
+    gyro_z = signNumber16(ReadMem(IMU_ADDRESS,IMU_GYRO_DATA_ADDRESS+4))/32.8f;
 
     if (axis == IMU_X_AXIS){
         return gyro_x;
@@ -98,9 +98,9 @@ void refreshIMUValues(){  // this is an interrupt, makes board run slow, dividin
     IMU_Accel[1] =  signNumber16(ReadMem(IMU_ADDRESS,IMU_ACCEL_DATA_ADDRESS+2))*10/16384.0f;
     IMU_Accel[2] =  signNumber16(ReadMem(IMU_ADDRESS,IMU_ACCEL_DATA_ADDRESS+4))*10/16384.0f;
 
-    IMU_Gyro[0] = signNumber16(ReadMem(IMU_ADDRESS,IMU_GYRO_DATA_ADDRESS  ))/131.0f; 
-    IMU_Gyro[1] = signNumber16(ReadMem(IMU_ADDRESS,IMU_GYRO_DATA_ADDRESS+2))/131.0f;
-    IMU_Gyro[2] = signNumber16(ReadMem(IMU_ADDRESS,IMU_GYRO_DATA_ADDRESS+4))/131.0f;
+    IMU_Gyro[0] = signNumber16(ReadMem(IMU_ADDRESS,IMU_GYRO_DATA_ADDRESS  ))/32.8f; 
+    IMU_Gyro[1] = signNumber16(ReadMem(IMU_ADDRESS,IMU_GYRO_DATA_ADDRESS+2))/32.8f;
+    IMU_Gyro[2] = signNumber16(ReadMem(IMU_ADDRESS,IMU_GYRO_DATA_ADDRESS+4))/32.8f;
 }
 
 
@@ -108,10 +108,12 @@ void refreshIMUValues(){  // this is an interrupt, makes board run slow, dividin
 
 void initIMU(){
     uint8_t wake = 0;
+    uint8_t Data;
+    Data = 0x01<<4;
     HAL_I2C_Mem_Write(&hi2c2, (IMU_ADDRESS<<1)+0, IMU_WAKE_ADDRESS, 1, &wake , 1                     , HAL_MAX_DELAY);
     HAL_I2C_Mem_Write(&hi2c2, (IMU_ADDRESS<<1)+0, IMU_OUTPUT_RATE_ADDRESS, 1, (uint8_t*) IMU_OUTPUT_RATE, 1 , HAL_MAX_DELAY); // sets data output rate to 1 kHz
-    HAL_I2C_Mem_Write(&hi2c2, (IMU_ADDRESS<<1)+0, IMU_ACCEL_CONFIG_ADDRESS, 1,(uint8_t*) 0x0, 1             , HAL_MAX_DELAY); // full range: +-2g
-    HAL_I2C_Mem_Write(&hi2c2, (IMU_ADDRESS<<1)+0, IMU_GYRO_CONFIG_ADDRESS, 1,(uint8_t*) 0x0, 1              , HAL_MAX_DELAY); // full range: +-250 deg/s 
+    HAL_I2C_Mem_Write(&hi2c2, (IMU_ADDRESS<<1)+0, IMU_ACCEL_CONFIG_ADDRESS, 1,(uint8_t*) 0x1, 1             , HAL_MAX_DELAY); // full range: +-2g
+    HAL_I2C_Mem_Write(&hi2c2, (IMU_ADDRESS<<1)+0, IMU_GYRO_CONFIG_ADDRESS, 1,&Data, 1              , HAL_MAX_DELAY); // full range: +-250 deg/s 
     
     HAL_I2C_Mem_Read(&hi2c2, (IMU_ADDRESS<<1)+1, IMU_DEVICE_CHECK, 1, &checkIMU, 1, HAL_MAX_DELAY);     
     // HAL_I2C_Mem_Read(&hi2c2, (IMU_ADDRESS<<1)+1, IMU_WAKE_ADDRESS, 1, &checkIMUVal, 1, HAL_MAX_DELAY);                     

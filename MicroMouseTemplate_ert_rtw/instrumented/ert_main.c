@@ -100,7 +100,7 @@ volatile boolean_T stopRequested;
 volatile boolean_T runModel;
 int main(int argc, char **argv)
 {
-  float modelBaseRate = 0.01;
+  float modelBaseRate = 0.005;
   float systemClock = 80.0;
   stopRequested = false;
   runModel = false;
