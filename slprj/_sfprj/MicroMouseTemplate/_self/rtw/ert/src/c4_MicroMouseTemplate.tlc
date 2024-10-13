@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   7 \
+    NumChartData   8 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -41,6 +41,14 @@
       SFName       ""\
       Path         ""\
       SrcLocation  "MicroMouseTemplate:2507:131-139"\
+    }\
+    ChartData {\
+      Name         "preDif"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2507:199-205"\
+      Dimensions   [1,8]\
     }\
     ChartData {\
       Name         "ADCOFF"\

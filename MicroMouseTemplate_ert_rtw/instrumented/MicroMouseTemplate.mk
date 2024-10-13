@@ -2,7 +2,7 @@
 ## Makefile generated for component 'MicroMouseTemplate'. 
 ## 
 ## Makefile     : MicroMouseTemplate.mk
-## Generated on : Thu Oct 03 03:42:35 2024
+## Generated on : Sun Oct 13 00:10:36 2024
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/MicroMouseTemplate.elf
 ## Product type : executable
 ## 
@@ -147,9 +147,9 @@ ECHO                = @echo
 MV                  = @move
 RUN                 =
 
-#----------------------------------------
-# "Faster Builds" Build Configuration
-#----------------------------------------
+#--------------------------------------
+# "Faster Runs" Build Configuration
+#--------------------------------------
 
 ARFLAGS              = ruvs
 ASFLAGS              = -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
@@ -164,7 +164,7 @@ CFLAGS               = $(FDATASECTIONS_FLG) \
                        -Wall \
                        -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
                        -c \
-                       -O0
+                       -O3
 CPPFLAGS             = -std=gnu++14 \
                        -fno-rtti \
                        -fno-exceptions \
@@ -172,7 +172,7 @@ CPPFLAGS             = -std=gnu++14 \
                        -Wall \
                        -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
                        -c \
-                       -O0
+                       -O3
 CPP_LDFLAGS          = -Wl,--gc-sections \
                        -Wl,-Map="$(PRODUCT_NAME).map"
 CPP_SHAREDLIB_LDFLAGS  =

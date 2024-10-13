@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   16 \
+    NumChartData   30 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -84,6 +84,35 @@
       SrcLocation  ""\
     }\
     ChartData {\
+      Name         "start"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "start"\
+      SrcLocation  ""\
+      Dimensions   [2]\
+    }\
+    ChartData {\
+      Name         "desA"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "desA"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "DesA"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "DesA"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "res"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "res"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
       Name         "is_active_c2_MicroMouseTemplate"\
       Description  "StateIsActive"\
       SFName       ""\
@@ -98,35 +127,105 @@
       SrcLocation  ""\
     }\
     ChartData {\
+      Name         "is_Hehehehe"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "Hehehehe"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
       Name         "preError"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2489:42:87-95"\
+      SrcLocation  "MicroMouseTemplate:2489:115:86-94"\
     }\
     ChartData {\
       Name         "sumError"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2489:42:148-156"\
+      SrcLocation  "MicroMouseTemplate:2489:115:147-155"\
     }\
     ChartData {\
       Name         "error"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2489:42:209-214"\
+      SrcLocation  "MicroMouseTemplate:2489:115:208-213"\
     }\
     ChartData {\
       Name         "Dave"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2489:42:261-265"\
+      SrcLocation  "MicroMouseTemplate:2489:115:260-264"\
+    }\
+    ChartData {\
+      Name         "preError"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2489:42:136-144"\
+    }\
+    ChartData {\
+      Name         "preSide"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2489:42:197-204"\
+    }\
+    ChartData {\
+      Name         "sumError"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2489:42:255-263"\
+    }\
+    ChartData {\
+      Name         "error"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2489:42:316-321"\
+    }\
+    ChartData {\
+      Name         "Dave"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2489:42:368-372"\
+    }\
+    ChartData {\
+      Name         "preError"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2489:203:86-94"\
+    }\
+    ChartData {\
+      Name         "sumError"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2489:203:147-155"\
+    }\
+    ChartData {\
+      Name         "Dave"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2489:203:260-264"\
     }\
     ChartData {\
       Name         "temporalCounter_i1"\
+      Description  "TemporalCounter"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "temporalCounter_i2"\
       Description  "TemporalCounter"\
       SFName       ""\
       Path         ""\

@@ -1,22 +1,3 @@
-/*
- * Academic License - for use in teaching, academic research, and meeting
- * course requirements at degree granting institutions only.  Not for
- * government, commercial, or other organizational use.
- *
- * File: ert_main.c
- *
- * Code generated for Simulink model 'MicroMouseTemplate'.
- *
- * Model version                  : 3.20
- * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Thu Oct  3 03:42:29 2024
- *
- * Target selection: ert.tlc
- * Embedded hardware selection: ARM Compatible->ARM Cortex
- * Code generation objectives: Unspecified
- * Validation result: Not run
- */
-
 #include "MicroMouseTemplate.h"
 #include "rtwtypes.h"
 #include "MW_target_hardware_resources.h"
@@ -29,54 +10,36 @@ boolean_T need2runFlags[2] = { 0, 0 };
 void rt_OneStep(void)
 {
   boolean_T eventFlags[2];
-
-  /* Check base rate for overrun */
   if (isRateRunning[0]++) {
     IsrOverrun = 1;
-
-    /* PROFILE_TASK_OVERRUN */
-    isRateRunning[0]--;                /* allow future iterations to succeed*/
+    isRateRunning[0]--;
     return;
   }
 
-  /*
-   * For a bare-board target (i.e., no operating system), the rates
-   * that execute this base step are buffered locally to allow for
-   * overlapping preemption.
-   */
   MicroMouseTemplate_SetEventsForThisBaseStep(eventFlags);
   __enable_irq();
   MicroMouseTemplate_step0();
-
-  /* Get model outputs here */
   __disable_irq();
   isRateRunning[0]--;
   if (eventFlags[1]) {
     if (need2runFlags[1]++) {
       IsrOverrun = 1;
-      need2runFlags[1]--;              /* allow future iterations to succeed*/
-
-      /* PROFILE_TASK_OVERRUN 1 */
+      need2runFlags[1]--;
       return;
     }
   }
 
   if (need2runFlags[1]) {
     if (isRateRunning[1]) {
-      /* Yield to higher priority*/
       return;
     }
 
     isRateRunning[1]++;
     __enable_irq();
-
-    /* Step the model for subrate "1" */
     switch (1)
     {
      case 1 :
       MicroMouseTemplate_step1();
-
-      /* Get model outputs here */
       break;
 
      default :
@@ -95,8 +58,6 @@ int main(int argc, char **argv)
 {
   float modelBaseRate = 0.01;
   float systemClock = 80.0;
-
-  /* Initialize variables */
   stopRequested = false;
   runModel = false;
 
@@ -107,8 +68,6 @@ int main(int argc, char **argv)
 #endif
 
   ;
-
-  // Peripheral initialization imported from STM32CubeMX project;
   HAL_Init();
   SystemClock_Config();
   PeriphCommonClock_Config();
@@ -139,7 +98,6 @@ int main(int argc, char **argv)
     ;
   }
 
-  /* Terminate model */
   MicroMouseTemplate_terminate();
 
 #if !defined(MW_FREERTOS) && !defined(USE_RTX)
@@ -152,9 +110,3 @@ int main(int argc, char **argv)
   __disable_irq();
   return 0;
 }
-
-/*
- * File trailer for generated code.
- *
- * [EOF]
- */
