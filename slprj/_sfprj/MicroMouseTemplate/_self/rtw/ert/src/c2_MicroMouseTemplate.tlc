@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   27 \
+    NumChartData   22 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -99,13 +99,6 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "res"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "res"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
       Name         "Next"\
       Description  "ChartLocal"\
       SFName       ""\
@@ -132,34 +125,6 @@
       SFName       ""\
       Path         ""\
       SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "preError"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "MicroMouseTemplate:2489:115:86-94"\
-    }\
-    ChartData {\
-      Name         "sumError"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "MicroMouseTemplate:2489:115:147-155"\
-    }\
-    ChartData {\
-      Name         "error"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "MicroMouseTemplate:2489:115:208-213"\
-    }\
-    ChartData {\
-      Name         "Dave"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "MicroMouseTemplate:2489:115:260-264"\
     }\
     ChartData {\
       Name         "preError"\

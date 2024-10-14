@@ -58,8 +58,8 @@ typedef struct {
   real_T CastToDouble[8];
   real_T CastToDouble_m[8];
   uint16_T Flip[8];
-  int8_T a[8];
   GPIO_TypeDef * portNameLoc;
+  int8_T TmpSignalConversionAtSFunct[8];
   real_T Calibrate;
   real_T Drive;
   real_T Left;
@@ -71,7 +71,7 @@ typedef struct {
   real_T Rb;
   real_T Lf;
   real_T Lb;
-  int8_T a__1[4];
+  int8_T a[6];
   uint32_T pinReadLoc;
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem6;
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem5;
@@ -109,19 +109,14 @@ typedef struct {
   real_T sum;
   real_T Turn;
   real_T DesA;
-  real_T res;
   real_T Next;
   real_T Setpoint;
   real_T preError;
   real_T sumError;
   real_T error;
   real_T Dave;
-  real_T preError_e;
-  real_T sumError_g;
-  real_T error_d;
-  real_T Dave_o;
-  real_T preError_m;
-  real_T sumError_m;
+  real_T preError_f;
+  real_T sumError_i;
   real_T c;
   real_T mindl;
   real_T maxdl;
@@ -145,7 +140,7 @@ typedef struct {
   int16_T dest[2];
   int16_T start[2];
   struct {
-    uint_T is_c2_MicroMouseTemplate:4;
+    uint_T is_c2_MicroMouseTemplate:5;
     uint_T is_active_c2_MicroMouseTemplate:1;
   } bitsForTID0;
 
@@ -154,6 +149,8 @@ typedef struct {
   volatile uint16_T TmpRTBAtMaxofElements8Outport1_;
   volatile uint16_T TmpRTBAtMaxofElements15Outport1;
   uint16_T temporalCounter_i1;
+  boolean_T Rmem_not_empty;
+  boolean_T Lmem_not_empty;
   boolean_T prePAT_not_empty;
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem6;
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem5;
@@ -179,7 +176,7 @@ struct P_MATLABSystem3_MicroMouseTem_T_ {
 
 struct P_MicroMouseTemplate_T_ {
   real_T Constant_Value;
-  real_T Constant_Value_i;
+  real_T Constant_Value_l;
   real_T DataStoreMemory_InitialValue;
   real_T DataStoreMemory1_InitialValue;
   real_T DataStoreMemory2_InitialValue;

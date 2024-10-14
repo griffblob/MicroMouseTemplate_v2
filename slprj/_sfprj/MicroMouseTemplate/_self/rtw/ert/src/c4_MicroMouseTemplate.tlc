@@ -18,7 +18,7 @@
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2507:64-70"\
+      SrcLocation  "MicroMouseTemplate:2507:71-77"\
       Dimensions   [8]\
     }\
     ChartData {\
@@ -26,21 +26,21 @@
       Description  "EmlPersistentSentinel"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2507:64-70"\
+      SrcLocation  "MicroMouseTemplate:2507:71-77"\
     }\
     ChartData {\
       Name         "preNoLED_not_empty"\
       Description  "EmlPersistentSentinel"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2507:131-139"\
+      SrcLocation  "MicroMouseTemplate:2507:138-146"\
     }\
     ChartData {\
       Name         "preDif"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2507:199-205"\
+      SrcLocation  "MicroMouseTemplate:2507:206-212"\
       Dimensions   [1,8]\
     }\
     ChartData {\
@@ -48,7 +48,7 @@
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2507:276-282"\
+      SrcLocation  "MicroMouseTemplate:2507:283-289"\
       Dimensions   [1,8]\
     }\
     ChartData {\
@@ -56,7 +56,7 @@
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2507:350-355"\
+      SrcLocation  "MicroMouseTemplate:2507:357-362"\
       Dimensions   [1,8]\
     }\
   }
