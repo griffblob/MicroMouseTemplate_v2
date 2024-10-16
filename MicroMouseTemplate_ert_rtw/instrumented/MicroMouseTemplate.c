@@ -13,18 +13,19 @@
 #define MicroMouseTemplate_IN_Center1  ((uint8_T)5U)
 #define MicroMouseTemplate_IN_Crossing ((uint8_T)6U)
 #define MicroMouseTemplate_IN_Delay    ((uint8_T)7U)
-#define MicroMouseTemplate_IN_Drive    ((uint8_T)8U)
-#define MicroMouseTemplate_IN_Drive2   ((uint8_T)9U)
-#define MicroMouseTemplate_IN_Flip     ((uint8_T)10U)
-#define MicroMouseTemplate_IN_Idle     ((uint8_T)11U)
-#define MicroMouseTemplate_IN_Init1    ((uint8_T)12U)
-#define MicroMouseTemplate_IN_OK       ((uint8_T)13U)
-#define MicroMouseTemplate_IN_Revert   ((uint8_T)14U)
-#define MicroMouseTemplate_IN_TurnLeft ((uint8_T)15U)
-#define MicroMouseTemplate_IN_TurnRight ((uint8_T)16U)
-#define MicroMouseTemplate_IN_Wait     ((uint8_T)17U)
-#define MicroMouseTemplate_IN_htot     ((uint8_T)18U)
-#define MicroMouseTemplate_IN_save     ((uint8_T)19U)
+#define MicroMouseTemplate_IN_Drive2   ((uint8_T)8U)
+#define MicroMouseTemplate_IN_Drive3   ((uint8_T)9U)
+#define MicroMouseTemplate_IN_Drive4   ((uint8_T)10U)
+#define MicroMouseTemplate_IN_Flip     ((uint8_T)11U)
+#define MicroMouseTemplate_IN_Idle     ((uint8_T)12U)
+#define MicroMouseTemplate_IN_Init1    ((uint8_T)13U)
+#define MicroMouseTemplate_IN_OK       ((uint8_T)14U)
+#define MicroMouseTemplate_IN_Revert   ((uint8_T)15U)
+#define MicroMouseTemplate_IN_TurnLeft ((uint8_T)16U)
+#define MicroMouseTemplate_IN_TurnRight ((uint8_T)17U)
+#define MicroMouseTemplate_IN_Wait     ((uint8_T)18U)
+#define MicroMouseTemplate_IN_htot     ((uint8_T)19U)
+#define MicroMouseTemplate_IN_save     ((uint8_T)20U)
 
 extern I2C_HandleTypeDef hi2c2;
 real32_T IMU_Accel[3];
@@ -43,15 +44,17 @@ RT_MODEL_MicroMouseTemplate_T *const MicroMouseTemplate_M =
   &MicroMouseTemplate_M_;
 static void MicroMouseTemplate_CenterAngle(real_T Angle, real_T Setpoint, real_T
   *Left, real_T *Right);
-static void MicroMouseTemplate_FollowLine(real_T Drive, const real_T b_Sensors[8],
-  real_T *Left, real_T *Right);
-static void MicroMouseTemplate_Crossing(const real_T Sensors[8]);
+static void MicroMouseTemplate_Crossing(const real_T *angle);
 static void MicroMouseTemplat_delConnection(int16_T x1, int16_T b_y1, int16_T x2,
   int16_T y2);
 static void MicroMouseTemplate_route(int16_T path[400]);
 static real_T MicroMouseTemplate_thingy(const real_T Sensors[8]);
-static void MicroMouseTemplate_Drive(const real_T Sensors[8], const boolean_T
-  *NOT1, const real_T *cross);
+static void MicroMouseTemplate_FollowLine1(const real_T b_Sensors[8], real_T
+  *DesA, real_T *errorR);
+static void MicroMouseTemplate_CenterAngle1(real_T Angle, real_T Setpoint,
+  real_T *Left, real_T *Right);
+static void MicroMouseTemplate_Drive4(const real_T Sensors[8], const boolean_T
+  *NOT1, const real_T *cross, const real_T *angle);
 static void MicroMouseTemplate_Init(void);
 static void MicroMouseTemp_SystemCore_setup(stm32cube_blocks_AnalogInput__T *obj);
 static void MicroMouseT_PWMOutput_setupImpl(stm32cube_blocks_PWMOutput_Mi_T *obj);
@@ -129,10 +132,10 @@ static void MicroMouseTemplate_CenterAngle(real_T Angle, real_T Setpoint, real_T
 {
   real_T error;
   error = Setpoint - Angle;
-  MicroMouseTemplate_DW.sumError_k += error;
-  MicroMouseTemplate_DW.sumError_k -= 0.005 * MicroMouseTemplate_DW.sumError_k;
-  *Right = (error - MicroMouseTemplate_DW.preError_k) * 60.0 + 6.0 * error;
-  MicroMouseTemplate_DW.preError_k = error;
+  MicroMouseTemplate_DW.sumError += error;
+  MicroMouseTemplate_DW.sumError -= 0.005 * MicroMouseTemplate_DW.sumError;
+  *Right = (error - MicroMouseTemplate_DW.preError) * 60.0 + 6.0 * error;
+  MicroMouseTemplate_DW.preError = error;
   if (0.0 - *Right >= -100.0) {
     *Left = 0.0 - *Right;
   } else {
@@ -152,55 +155,7 @@ static void MicroMouseTemplate_CenterAngle(real_T Angle, real_T Setpoint, real_T
   }
 }
 
-static void MicroMouseTemplate_FollowLine(real_T Drive, const real_T b_Sensors[8],
-  real_T *Left, real_T *Right)
-{
-  real_T PID;
-  *Left = 0.0;
-  *Right = 0.0;
-  if (Drive == 1.0) {
-    if ((b_Sensors[2] == 1.0) && (b_Sensors[5] == 0.0)) {
-      MicroMouseTemplate_DW.error = -1.0;
-    } else if ((b_Sensors[2] == 0.0) && (b_Sensors[5] == 1.0)) {
-      MicroMouseTemplate_DW.error = 1.0;
-    } else if ((b_Sensors[2] == 0.0) && (b_Sensors[5] == 0.0)) {
-      MicroMouseTemplate_DW.error = 0.0;
-    } else if ((b_Sensors[0] == 0.0) && (b_Sensors[2] == 1.0)) {
-      MicroMouseTemplate_DW.error = 2.0;
-    } else if ((b_Sensors[7] == 0.0) && (b_Sensors[5] == 1.0)) {
-      MicroMouseTemplate_DW.error = -2.0;
-    }
-
-    MicroMouseTemplate_DW.sumError += MicroMouseTemplate_DW.error;
-    MicroMouseTemplate_DW.sumError -= 0.005 * MicroMouseTemplate_DW.sumError;
-    MicroMouseTemplate_DW.Dave = (MicroMouseTemplate_DW.error -
-      MicroMouseTemplate_DW.preError) + 0.9 * MicroMouseTemplate_DW.Dave;
-    PID = 15.0 * MicroMouseTemplate_DW.error + 125.0 *
-      MicroMouseTemplate_DW.Dave;
-    MicroMouseTemplate_DW.preError = MicroMouseTemplate_DW.error;
-    if (100.0 - PID >= -100.0) {
-      *Left = 100.0 - PID;
-    } else {
-      *Left = -100.0;
-    }
-
-    if (*Left > 100.0) {
-      *Left = 100.0;
-    }
-
-    if (PID + 100.0 >= -100.0) {
-      *Right = PID + 100.0;
-    } else {
-      *Right = -100.0;
-    }
-
-    if (*Right > 100.0) {
-      *Right = 100.0;
-    }
-  }
-}
-
-static void MicroMouseTemplate_Crossing(const real_T Sensors[8])
+static void MicroMouseTemplate_Crossing(const real_T *angle)
 {
   if ((MicroMouseTemplate_DW.Turn == 2.0) && (MicroMouseTemplate_DW.Next == 1.0))
   {
@@ -227,10 +182,9 @@ static void MicroMouseTemplate_Crossing(const real_T Sensors[8])
               1.0)) {
     MicroMouseTemplate_DW.temporalCounter_i1 = 0U;
     MicroMouseTemplate_DW.bitsForTID0.is_c2_MicroMouseTemplate =
-      MicroMouseTemplate_IN_Drive;
-    MicroMouseTemplate_B.Drive = 1.0;
-    MicroMouseTemplate_FollowLine(1.0, Sensors, &MicroMouseTemplate_B.Left,
-      &MicroMouseTemplate_B.Right);
+      MicroMouseTemplate_IN_Drive4;
+    MicroMouseTemplate_DW.DesA = 0.0;
+    MicroMouseTemplate_DW.anglec = *angle;
   }
 }
 
@@ -262,17 +216,35 @@ static void MicroMouseTemplat_delConnection(int16_T x1, int16_T b_y1, int16_T x2
   }
 }
 
+real_T rt_roundd(real_T u)
+{
+  real_T y;
+  if (fabs(u) < 4.503599627370496E+15) {
+    if (u >= 0.5) {
+      y = floor(u + 0.5);
+    } else if (u > -0.5) {
+      y = 0.0;
+    } else {
+      y = ceil(u - 0.5);
+    }
+  } else {
+    y = u;
+  }
+
+  return y;
+}
+
 static void MicroMouseTemplate_route(int16_T path[400])
 {
   int32_T b;
   int32_T exitg1;
   int32_T i;
   int32_T i_0;
-  int32_T tmp;
   int16_T tmp_data[2];
   int16_T b_y1;
   int16_T connection;
   int16_T connection_0;
+  int16_T connection_1;
   int16_T qend;
   int16_T x1;
   for (i = 0; i < 49; i++) {
@@ -295,23 +267,67 @@ static void MicroMouseTemplate_route(int16_T path[400])
     x1 = MicroMouseTemplate_B.q_data[0];
     b_y1 = MicroMouseTemplate_B.q_data[MicroMouseTemplate_DW.q_sizes[0]];
     for (i_0 = 0; i_0 < 168; i_0++) {
-      if ((MicroMouseTemplate_DW.connection[i_0] == x1) &&
-          (MicroMouseTemplate_DW.connection[i_0 + 168] == b_y1)) {
+      MicroMouseTemplate_B.fine = 0.5;
+      connection_1 = MicroMouseTemplate_DW.connection[i_0];
+      if (connection_1 == MicroMouseTemplate_DW.pos[0]) {
+        connection_0 = MicroMouseTemplate_DW.connection[i_0 + 168];
+        if (connection_0 == MicroMouseTemplate_DW.pos[1]) {
+          connection = MicroMouseTemplate_DW.connection[i_0 + 336];
+          if (connection_1 > connection) {
+            if (MicroMouseTemplate_DW.direction[3] == 1) {
+              MicroMouseTemplate_B.fine = 0.0;
+            }
+          } else if ((connection_1 < connection) &&
+                     (MicroMouseTemplate_DW.direction[1] == 1)) {
+            MicroMouseTemplate_B.fine = 0.0;
+          }
+
+          connection = MicroMouseTemplate_DW.connection[i_0 + 504];
+          if (connection_0 > connection) {
+            if (MicroMouseTemplate_DW.direction[2] == 1) {
+              MicroMouseTemplate_B.fine = 0.0;
+            }
+          } else if ((connection_0 < connection) &&
+                     (MicroMouseTemplate_DW.direction[0] == 1)) {
+            MicroMouseTemplate_B.fine = 0.0;
+          }
+        } else {
+          MicroMouseTemplate_B.fine = 0.0;
+        }
+      } else {
+        MicroMouseTemplate_B.fine = 0.0;
+      }
+
+      if ((connection_1 == x1) && (MicroMouseTemplate_DW.connection[i_0 + 168] ==
+           b_y1)) {
         i = MicroMouseTemplate_B.dist[((b_y1 - 1) * 7 + x1) - 1] + 1;
-        tmp = i;
+        b = i;
         if (i > 32767) {
-          tmp = 32767;
+          b = 32767;
         }
 
-        connection = MicroMouseTemplate_DW.connection[i_0 + 504];
-        connection_0 = MicroMouseTemplate_DW.connection[i_0 + 336];
-        b = (connection - 1) * 7 + connection_0;
-        if (MicroMouseTemplate_B.dist[b - 1] > tmp) {
+        b = (int32_T)rt_roundd((real_T)b + MicroMouseTemplate_B.fine);
+        if (b < 32768) {
+          connection = (int16_T)b;
+        } else {
+          connection = MAX_int16_T;
+        }
+
+        connection_1 = MicroMouseTemplate_DW.connection[i_0 + 336];
+        connection_0 = MicroMouseTemplate_DW.connection[i_0 + 504];
+        b = (connection_0 - 1) * 7 + connection_1;
+        if (MicroMouseTemplate_B.dist[b - 1] > connection) {
           if (i > 32767) {
             i = 32767;
           }
 
-          MicroMouseTemplate_B.dist[b - 1] = (int16_T)i;
+          i = (int32_T)rt_roundd((real_T)i + MicroMouseTemplate_B.fine);
+          if (i < 32768) {
+            MicroMouseTemplate_B.dist[b - 1] = (int16_T)i;
+          } else {
+            MicroMouseTemplate_B.dist[b - 1] = MAX_int16_T;
+          }
+
           MicroMouseTemplate_B.pre[b - 1] = x1;
           MicroMouseTemplate_B.pre[b + 48] = b_y1;
           i = qend + 1;
@@ -319,9 +335,9 @@ static void MicroMouseTemplate_route(int16_T path[400])
             i = 32767;
           }
 
-          MicroMouseTemplate_B.q_data[i - 1] = connection_0;
+          MicroMouseTemplate_B.q_data[i - 1] = connection_1;
           MicroMouseTemplate_B.q_data[(i + MicroMouseTemplate_DW.q_sizes[0]) - 1]
-            = connection;
+            = connection_0;
           i = qend + 1;
           if (qend + 1 > 32767) {
             i = 32767;
@@ -374,9 +390,9 @@ static void MicroMouseTemplate_route(int16_T path[400])
       MicroMouseTemplate_DW.pathend = (int16_T)i;
       i = MicroMouseTemplate_B.q_data[0];
       qend = MicroMouseTemplate_B.q_data[MicroMouseTemplate_DW.q_sizes[0]];
-      for (b = 0; b < 2; b++) {
-        MicroMouseTemplate_B.q_data[1 + MicroMouseTemplate_DW.q_sizes[0] * b] =
-          MicroMouseTemplate_B.pre[(((qend - 1) * 7 + i) + 49 * b) - 1];
+      for (i_0 = 0; i_0 < 2; i_0++) {
+        MicroMouseTemplate_B.q_data[1 + MicroMouseTemplate_DW.q_sizes[0] * i_0] =
+          MicroMouseTemplate_B.pre[(((qend - 1) * 7 + i) + 49 * i_0) - 1];
       }
 
       for (i_0 = 0; i_0 < 199; i_0++) {
@@ -723,8 +739,63 @@ static real_T MicroMouseTemplate_thingy(const real_T Sensors[8])
   return Turn;
 }
 
-static void MicroMouseTemplate_Drive(const real_T Sensors[8], const boolean_T
-  *NOT1, const real_T *cross)
+static void MicroMouseTemplate_FollowLine1(const real_T b_Sensors[8], real_T
+  *DesA, real_T *errorR)
+{
+  if ((b_Sensors[2] == 1.0) && (b_Sensors[5] == 0.0)) {
+    MicroMouseTemplate_DW.error = -0.5;
+  } else if ((b_Sensors[2] == 0.0) && (b_Sensors[5] == 1.0)) {
+    MicroMouseTemplate_DW.error = 0.5;
+  } else if ((b_Sensors[2] == 0.0) && (b_Sensors[5] == 0.0)) {
+    MicroMouseTemplate_DW.error = 0.0;
+  } else if ((b_Sensors[0] == 0.0) && (b_Sensors[2] == 1.0)) {
+    MicroMouseTemplate_DW.error = 2.0;
+  } else if ((b_Sensors[7] == 0.0) && (b_Sensors[5] == 1.0)) {
+    MicroMouseTemplate_DW.error = -2.0;
+  }
+
+  MicroMouseTemplate_DW.sumError_i += MicroMouseTemplate_DW.error;
+  MicroMouseTemplate_DW.sumError_i -= 0.005 * MicroMouseTemplate_DW.sumError_i;
+  *errorR = MicroMouseTemplate_DW.error;
+  MicroMouseTemplate_DW.Dave = (MicroMouseTemplate_DW.error -
+    MicroMouseTemplate_DW.preError_n) + 0.9 * MicroMouseTemplate_DW.Dave;
+  *DesA = 10.0 * MicroMouseTemplate_DW.error + 6.0 * MicroMouseTemplate_DW.Dave;
+  MicroMouseTemplate_DW.preError_n = MicroMouseTemplate_DW.error;
+}
+
+static void MicroMouseTemplate_CenterAngle1(real_T Angle, real_T Setpoint,
+  real_T *Left, real_T *Right)
+{
+  real_T PID;
+  real_T error;
+  error = Setpoint - Angle;
+  MicroMouseTemplate_DW.sumError_h += error;
+  MicroMouseTemplate_DW.sumError_h -= 0.005 * MicroMouseTemplate_DW.sumError_h;
+  PID = (error - MicroMouseTemplate_DW.preError_j) * 60.0 + 6.0 * error;
+  MicroMouseTemplate_DW.preError_j = error;
+  if (100.0 - PID >= -100.0) {
+    *Left = 100.0 - PID;
+  } else {
+    *Left = -100.0;
+  }
+
+  if (*Left > 100.0) {
+    *Left = 100.0;
+  }
+
+  if (PID + 100.0 >= -100.0) {
+    *Right = PID + 100.0;
+  } else {
+    *Right = -100.0;
+  }
+
+  if (*Right > 100.0) {
+    *Right = 100.0;
+  }
+}
+
+static void MicroMouseTemplate_Drive4(const real_T Sensors[8], const boolean_T
+  *NOT1, const real_T *cross, const real_T *angle)
 {
   int32_T i;
   int16_T temp;
@@ -743,6 +814,21 @@ static void MicroMouseTemplate_Drive(const real_T Sensors[8], const boolean_T
     MicroMouseTemplate_DW.dest[1] = temp;
     MicroMouseTemplate_B.Left = 0.0;
     MicroMouseTemplate_B.Right = 0.0;
+  } else if (*NOT1) {
+    MicroMouseTemplate_DW.bitsForTID0.is_c2_MicroMouseTemplate =
+      MicroMouseTemplate_IN_Revert;
+    memcpy(&MicroMouseTemplate_DW.connection[0],
+           &MicroMouseTemplate_DW.connectionsave[0], 672U * sizeof(int16_T));
+    MicroMouseTemplate_DW.start[0] = MicroMouseTemplate_DW.beginpos[0];
+    MicroMouseTemplate_DW.pos[0] = MicroMouseTemplate_DW.beginpos[0];
+    MicroMouseTemplate_DW.dest[0] = MicroMouseTemplate_DW.endpos[0];
+    MicroMouseTemplate_DW.start[1] = MicroMouseTemplate_DW.beginpos[1];
+    MicroMouseTemplate_DW.pos[1] = MicroMouseTemplate_DW.beginpos[1];
+    MicroMouseTemplate_DW.dest[1] = MicroMouseTemplate_DW.endpos[1];
+    MicroMouseTemplate_DW.direction[0] = 1;
+    MicroMouseTemplate_DW.direction[1] = 0;
+    MicroMouseTemplate_DW.direction[2] = 0;
+    MicroMouseTemplate_DW.direction[3] = 0;
   } else if (tmp) {
     MicroMouseTemplate_DW.bitsForTID0.is_c2_MicroMouseTemplate =
       MicroMouseTemplate_IN_Crossing;
@@ -778,23 +864,12 @@ static void MicroMouseTemplate_Drive(const real_T Sensors[8], const boolean_T
 
     MicroMouseTemplate_DW.pos[1] = (int16_T)i;
     MicroMouseTemplate_DW.Next = 1.0;
-  } else if (*NOT1) {
-    MicroMouseTemplate_DW.bitsForTID0.is_c2_MicroMouseTemplate =
-      MicroMouseTemplate_IN_Revert;
-    memcpy(&MicroMouseTemplate_DW.connection[0],
-           &MicroMouseTemplate_DW.connectionsave[0], 672U * sizeof(int16_T));
-    MicroMouseTemplate_DW.start[0] = MicroMouseTemplate_DW.beginpos[0];
-    MicroMouseTemplate_DW.pos[0] = MicroMouseTemplate_DW.beginpos[0];
-    MicroMouseTemplate_DW.dest[0] = MicroMouseTemplate_DW.endpos[0];
-    MicroMouseTemplate_DW.start[1] = MicroMouseTemplate_DW.beginpos[1];
-    MicroMouseTemplate_DW.pos[1] = MicroMouseTemplate_DW.beginpos[1];
-    MicroMouseTemplate_DW.dest[1] = MicroMouseTemplate_DW.endpos[1];
-    MicroMouseTemplate_DW.direction[0] = 1;
-    MicroMouseTemplate_DW.direction[1] = 0;
-    MicroMouseTemplate_DW.direction[2] = 0;
-    MicroMouseTemplate_DW.direction[3] = 0;
   } else {
-    MicroMouseTemplate_FollowLine(MicroMouseTemplate_B.Drive, Sensors,
+    MicroMouseTemplate_FollowLine1(Sensors, &MicroMouseTemplate_B.TurnA,
+      &MicroMouseTemplate_B.errorR_k);
+    MicroMouseTemplate_DW.anglec += MicroMouseTemplate_B.errorR_k * 0.05;
+    MicroMouseTemplate_CenterAngle1(*angle, (MicroMouseTemplate_DW.DesA +
+      MicroMouseTemplate_B.TurnA) + MicroMouseTemplate_DW.anglec,
       &MicroMouseTemplate_B.Left, &MicroMouseTemplate_B.Right);
   }
 }
@@ -951,6 +1026,7 @@ static void MicroMous_PWMOutput_setupImpl_d(stm32cube_blocks_PWMOutput_Mi_T *obj
 void MicroMouseTemplate_step0(void)
 {
   int32_T i;
+  int32_T k;
   uint16_T rtb_TmpRTBAtMaxofElements7Outpo;
   uint16_T rtb_TmpRTBAtMaxofElementsOutpor;
   int8_T a__1[3];
@@ -982,11 +1058,9 @@ void MicroMouseTemplate_step0(void)
     &MicroMouseTemplate_B.MATLABSystem4, &MicroMouseTemplate_DW.MATLABSystem4,
     &MicroMouseTemplate_P.MATLABSystem4);
   MicroMouseTemplate_B.Lb = MicroMouseTemplate_B.MATLABSystem4.MATLABSystem3[0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 9;
-       MicroMouseTemplate_B.k++) {
+  for (k = 0; k < 9; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem4.MATLABSystem3[MicroMouseTemplate_B.k +
-      1];
+      MicroMouseTemplate_B.MATLABSystem4.MATLABSystem3[k + 1];
     if (MicroMouseTemplate_B.Lb < MicroMouseTemplate_B.cross) {
       MicroMouseTemplate_B.Lb = MicroMouseTemplate_B.cross;
     }
@@ -995,14 +1069,13 @@ void MicroMouseTemplate_step0(void)
   MicroMouseTem_MATLABSystem1(MicroMouseTemplate_B.Lb,
     &MicroMouseTemplate_B.MATLABSystem1, &MicroMouseTemplate_DW.MATLABSystem1,
     &MicroMouseTemplate_P.MATLABSystem1);
-  MicroMouseTemplate_B.Rb = MicroMouseTemplate_B.MATLABSystem1.MATLABSystem1[0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 24;
-       MicroMouseTemplate_B.k++) {
+  MicroMouseTemplate_B.errorR =
+    MicroMouseTemplate_B.MATLABSystem1.MATLABSystem1[0];
+  for (k = 0; k < 24; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem1.MATLABSystem1[MicroMouseTemplate_B.k +
-      1];
-    if (MicroMouseTemplate_B.Rb > MicroMouseTemplate_B.cross) {
-      MicroMouseTemplate_B.Rb = MicroMouseTemplate_B.cross;
+      MicroMouseTemplate_B.MATLABSystem1.MATLABSystem1[k + 1];
+    if (MicroMouseTemplate_B.errorR > MicroMouseTemplate_B.cross) {
+      MicroMouseTemplate_B.errorR = MicroMouseTemplate_B.cross;
     }
   }
 
@@ -1012,11 +1085,9 @@ void MicroMouseTemplate_step0(void)
     &MicroMouseTemplate_P.MATLABSystem1_ci);
   MicroMouseTemplate_B.Lb = MicroMouseTemplate_B.MATLABSystem1_ci.MATLABSystem1
     [0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 24;
-       MicroMouseTemplate_B.k++) {
+  for (k = 0; k < 24; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem1_ci.MATLABSystem1[MicroMouseTemplate_B.k
-      + 1];
+      MicroMouseTemplate_B.MATLABSystem1_ci.MATLABSystem1[k + 1];
     if (MicroMouseTemplate_B.Lb < MicroMouseTemplate_B.cross) {
       MicroMouseTemplate_B.Lb = MicroMouseTemplate_B.cross;
     }
@@ -1028,11 +1099,9 @@ void MicroMouseTemplate_step0(void)
     &MicroMouseTemplate_P.MATLABSystem3_c);
   MicroMouseTemplate_B.maxV =
     MicroMouseTemplate_B.MATLABSystem3_c.MATLABSystem1[0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 24;
-       MicroMouseTemplate_B.k++) {
+  for (k = 0; k < 24; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem3_c.MATLABSystem1[MicroMouseTemplate_B.k
-      + 1];
+      MicroMouseTemplate_B.MATLABSystem3_c.MATLABSystem1[k + 1];
     if (MicroMouseTemplate_B.maxV < MicroMouseTemplate_B.cross) {
       MicroMouseTemplate_B.maxV = MicroMouseTemplate_B.cross;
     }
@@ -1044,11 +1113,9 @@ void MicroMouseTemplate_step0(void)
     &MicroMouseTemplate_P.MATLABSystem4_c);
   MicroMouseTemplate_B.maxV_m =
     MicroMouseTemplate_B.MATLABSystem4_c.MATLABSystem1[0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 24;
-       MicroMouseTemplate_B.k++) {
+  for (k = 0; k < 24; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem4_c.MATLABSystem1[MicroMouseTemplate_B.k
-      + 1];
+      MicroMouseTemplate_B.MATLABSystem4_c.MATLABSystem1[k + 1];
     if (MicroMouseTemplate_B.maxV_m < MicroMouseTemplate_B.cross) {
       MicroMouseTemplate_B.maxV_m = MicroMouseTemplate_B.cross;
     }
@@ -1059,11 +1126,9 @@ void MicroMouseTemplate_step0(void)
     &MicroMouseTemplate_P.MATLABSystem5);
   MicroMouseTemplate_B.maxV_c =
     MicroMouseTemplate_B.MATLABSystem5.MATLABSystem1[0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 24;
-       MicroMouseTemplate_B.k++) {
+  for (k = 0; k < 24; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem5.MATLABSystem1[MicroMouseTemplate_B.k +
-      1];
+      MicroMouseTemplate_B.MATLABSystem5.MATLABSystem1[k + 1];
     if (MicroMouseTemplate_B.maxV_c < MicroMouseTemplate_B.cross) {
       MicroMouseTemplate_B.maxV_c = MicroMouseTemplate_B.cross;
     }
@@ -1073,11 +1138,9 @@ void MicroMouseTemplate_step0(void)
     &MicroMouseTemplate_B.MATLABSystem3, &MicroMouseTemplate_DW.MATLABSystem3,
     &MicroMouseTemplate_P.MATLABSystem3);
   MicroMouseTemplate_B.Lf = MicroMouseTemplate_B.MATLABSystem3.MATLABSystem3[0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 9;
-       MicroMouseTemplate_B.k++) {
+  for (k = 0; k < 9; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem3.MATLABSystem3[MicroMouseTemplate_B.k +
-      1];
+      MicroMouseTemplate_B.MATLABSystem3.MATLABSystem3[k + 1];
     if (MicroMouseTemplate_B.Lf < MicroMouseTemplate_B.cross) {
       MicroMouseTemplate_B.Lf = MicroMouseTemplate_B.cross;
     }
@@ -1087,11 +1150,9 @@ void MicroMouseTemplate_step0(void)
     &MicroMouseTemplate_B.MATLABSystem2, &MicroMouseTemplate_DW.MATLABSystem2,
     &MicroMouseTemplate_P.MATLABSystem2);
   MicroMouseTemplate_B.Lf = MicroMouseTemplate_B.MATLABSystem2.MATLABSystem1[0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 24;
-       MicroMouseTemplate_B.k++) {
+  for (k = 0; k < 24; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem2.MATLABSystem1[MicroMouseTemplate_B.k +
-      1];
+      MicroMouseTemplate_B.MATLABSystem2.MATLABSystem1[k + 1];
     if (MicroMouseTemplate_B.Lf > MicroMouseTemplate_B.cross) {
       MicroMouseTemplate_B.Lf = MicroMouseTemplate_B.cross;
     }
@@ -1100,7 +1161,7 @@ void MicroMouseTemplate_step0(void)
   rtb_TmpRTBAtMaxofElements7Outpo =
     MicroMouseTemplate_DW.TmpRTBAtMaxofElements7Outport1_;
   ADC_H[0] = rtb_TmpRTBAtMaxofElementsOutpor;
-  MicroMouseTemplate_B.cross = fmod(floor(MicroMouseTemplate_B.Rb), 65536.0);
+  MicroMouseTemplate_B.cross = fmod(floor(MicroMouseTemplate_B.errorR), 65536.0);
   ADC_H[1] = (uint16_T)(MicroMouseTemplate_B.cross < 0.0 ? (int32_T)(uint16_T)
                         -(int16_T)(uint16_T)-MicroMouseTemplate_B.cross :
                         (int32_T)(uint16_T)MicroMouseTemplate_B.cross);
@@ -1132,35 +1193,30 @@ void MicroMouseTemplate_step0(void)
     &MicroMouseTemplate_B.MATLABSystem1_c,
     &MicroMouseTemplate_DW.MATLABSystem1_c,
     &MicroMouseTemplate_P.MATLABSystem1_c);
-  MicroMouseTemplate_B.Rb = MicroMouseTemplate_B.MATLABSystem1_c.MATLABSystem1[0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 24;
-       MicroMouseTemplate_B.k++) {
+  MicroMouseTemplate_B.errorR =
+    MicroMouseTemplate_B.MATLABSystem1_c.MATLABSystem1[0];
+  for (k = 0; k < 24; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem1_c.MATLABSystem1[MicroMouseTemplate_B.k
-      + 1];
-    if (MicroMouseTemplate_B.Rb > MicroMouseTemplate_B.cross) {
-      MicroMouseTemplate_B.Rb = MicroMouseTemplate_B.cross;
+      MicroMouseTemplate_B.MATLABSystem1_c.MATLABSystem1[k + 1];
+    if (MicroMouseTemplate_B.errorR > MicroMouseTemplate_B.cross) {
+      MicroMouseTemplate_B.errorR = MicroMouseTemplate_B.cross;
     }
   }
 
   MicroMouseTemplate_B.Lf = MicroMouseTemplate_B.MATLABSystem1_ci.MATLABSystem1
     [0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 24;
-       MicroMouseTemplate_B.k++) {
+  for (k = 0; k < 24; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem1_ci.MATLABSystem1[MicroMouseTemplate_B.k
-      + 1];
+      MicroMouseTemplate_B.MATLABSystem1_ci.MATLABSystem1[k + 1];
     if (MicroMouseTemplate_B.Lf > MicroMouseTemplate_B.cross) {
       MicroMouseTemplate_B.Lf = MicroMouseTemplate_B.cross;
     }
   }
 
   MicroMouseTemplate_B.Lb = MicroMouseTemplate_B.MATLABSystem3_c.MATLABSystem1[0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 24;
-       MicroMouseTemplate_B.k++) {
+  for (k = 0; k < 24; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem3_c.MATLABSystem1[MicroMouseTemplate_B.k
-      + 1];
+      MicroMouseTemplate_B.MATLABSystem3_c.MATLABSystem1[k + 1];
     if (MicroMouseTemplate_B.Lb > MicroMouseTemplate_B.cross) {
       MicroMouseTemplate_B.Lb = MicroMouseTemplate_B.cross;
     }
@@ -1168,11 +1224,9 @@ void MicroMouseTemplate_step0(void)
 
   MicroMouseTemplate_B.maxV =
     MicroMouseTemplate_B.MATLABSystem4_c.MATLABSystem1[0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 24;
-       MicroMouseTemplate_B.k++) {
+  for (k = 0; k < 24; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem4_c.MATLABSystem1[MicroMouseTemplate_B.k
-      + 1];
+      MicroMouseTemplate_B.MATLABSystem4_c.MATLABSystem1[k + 1];
     if (MicroMouseTemplate_B.maxV > MicroMouseTemplate_B.cross) {
       MicroMouseTemplate_B.maxV = MicroMouseTemplate_B.cross;
     }
@@ -1180,11 +1234,9 @@ void MicroMouseTemplate_step0(void)
 
   MicroMouseTemplate_B.maxV_m =
     MicroMouseTemplate_B.MATLABSystem5.MATLABSystem1[0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 24;
-       MicroMouseTemplate_B.k++) {
+  for (k = 0; k < 24; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem5.MATLABSystem1[MicroMouseTemplate_B.k +
-      1];
+      MicroMouseTemplate_B.MATLABSystem5.MATLABSystem1[k + 1];
     if (MicroMouseTemplate_B.maxV_m > MicroMouseTemplate_B.cross) {
       MicroMouseTemplate_B.maxV_m = MicroMouseTemplate_B.cross;
     }
@@ -1196,11 +1248,9 @@ void MicroMouseTemplate_step0(void)
     &MicroMouseTemplate_P.MATLABSystem2_c);
   MicroMouseTemplate_B.maxV_c =
     MicroMouseTemplate_B.MATLABSystem2_c.MATLABSystem1[0];
-  for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < 24;
-       MicroMouseTemplate_B.k++) {
+  for (k = 0; k < 24; k++) {
     MicroMouseTemplate_B.cross =
-      MicroMouseTemplate_B.MATLABSystem2_c.MATLABSystem1[MicroMouseTemplate_B.k
-      + 1];
+      MicroMouseTemplate_B.MATLABSystem2_c.MATLABSystem1[k + 1];
     if (MicroMouseTemplate_B.maxV_c > MicroMouseTemplate_B.cross) {
       MicroMouseTemplate_B.maxV_c = MicroMouseTemplate_B.cross;
     }
@@ -1209,7 +1259,7 @@ void MicroMouseTemplate_step0(void)
   rtb_TmpRTBAtMaxofElements7Outpo =
     MicroMouseTemplate_DW.TmpRTBAtMaxofElements15Outport1;
   ADC_L[0] = rtb_TmpRTBAtMaxofElementsOutpor;
-  MicroMouseTemplate_B.cross = fmod(floor(MicroMouseTemplate_B.Rb), 65536.0);
+  MicroMouseTemplate_B.cross = fmod(floor(MicroMouseTemplate_B.errorR), 65536.0);
   ADC_L[1] = (uint16_T)(MicroMouseTemplate_B.cross < 0.0 ? (int32_T)(uint16_T)
                         -(int16_T)(uint16_T)-MicroMouseTemplate_B.cross :
                         (int32_T)(uint16_T)MicroMouseTemplate_B.cross);
@@ -1279,22 +1329,17 @@ void MicroMouseTemplate_step0(void)
   a__1[2] = 0;
   if (i > 0) {
     if (NOT1) {
-      for (MicroMouseTemplate_B.k = 7; MicroMouseTemplate_B.k >= i + 1;
-           MicroMouseTemplate_B.k--) {
-        MicroMouseTemplate_B.a[MicroMouseTemplate_B.k - 1] =
-          MicroMouseTemplate_B.a[(MicroMouseTemplate_B.k - i) - 1];
+      for (k = 7; k >= i + 1; k--) {
+        MicroMouseTemplate_B.a[k - 1] = MicroMouseTemplate_B.a[(k - i) - 1];
       }
 
       memset(&MicroMouseTemplate_B.a[0], 0, (uint32_T)i * sizeof(int8_T));
     } else {
       memcpy(&a__1[0], &b_a[0], (uint32_T)i * sizeof(int8_T));
-      MicroMouseTemplate_B.k = 6 - i;
-      memset(&MicroMouseTemplate_B.a[0], 0, (uint32_T)(MicroMouseTemplate_B.k +
-              1) * sizeof(int8_T));
-      for (MicroMouseTemplate_B.k = 0; MicroMouseTemplate_B.k < i;
-           MicroMouseTemplate_B.k++) {
-        MicroMouseTemplate_B.a[(MicroMouseTemplate_B.k - i) + 7] =
-          a__1[MicroMouseTemplate_B.k];
+      memset(&MicroMouseTemplate_B.a[0], 0, (uint32_T)((6 - i) + 1) * sizeof
+             (int8_T));
+      for (k = 0; k < i; k++) {
+        MicroMouseTemplate_B.a[(k - i) + 7] = a__1[k];
       }
     }
   }
@@ -1601,7 +1646,7 @@ void MicroMouseTemplate_step0(void)
       break;
 
      case MicroMouseTemplate_IN_Crossing:
-      MicroMouseTemplate_Crossing(MicroMouseTemplate_B.CastToDouble_m);
+      MicroMouseTemplate_Crossing(&MicroMouseTemplate_DW.sum);
       break;
 
      case MicroMouseTemplate_IN_Delay:
@@ -1644,11 +1689,6 @@ void MicroMouseTemplate_step0(void)
       }
       break;
 
-     case MicroMouseTemplate_IN_Drive:
-      MicroMouseTemplate_Drive(MicroMouseTemplate_B.CastToDouble_m, &NOT1,
-        &MicroMouseTemplate_B.cross);
-      break;
-
      case MicroMouseTemplate_IN_Drive2:
       if (MicroMouseTemplate_DW.temporalCounter_i1 >= 100U) {
         MicroMouseTemplate_DW.temporalCounter_i1 = 0U;
@@ -1658,15 +1698,29 @@ void MicroMouseTemplate_step0(void)
       }
       break;
 
+     case MicroMouseTemplate_IN_Drive3:
+      MicroMouseTemplate_FollowLine1(MicroMouseTemplate_B.CastToDouble_m,
+        &MicroMouseTemplate_B.cross, &MicroMouseTemplate_B.errorR);
+      MicroMouseTemplate_DW.anglec += MicroMouseTemplate_B.errorR * 0.05;
+      MicroMouseTemplate_CenterAngle1(MicroMouseTemplate_DW.sum,
+        (MicroMouseTemplate_DW.DesA + MicroMouseTemplate_B.cross) +
+        MicroMouseTemplate_DW.anglec, &MicroMouseTemplate_B.Left,
+        &MicroMouseTemplate_B.Right);
+      break;
+
+     case MicroMouseTemplate_IN_Drive4:
+      MicroMouseTemplate_Drive4(MicroMouseTemplate_B.CastToDouble_m, &NOT1,
+        &MicroMouseTemplate_B.cross, &MicroMouseTemplate_DW.sum);
+      break;
+
      case MicroMouseTemplate_IN_Flip:
       if ((MicroMouseTemplate_DW.DesA - MicroMouseTemplate_DW.sum < 0.0) ||
           (MicroMouseTemplate_DW.temporalCounter_i1 >= 140U)) {
         MicroMouseTemplate_DW.temporalCounter_i1 = 0U;
         MicroMouseTemplate_DW.bitsForTID0.is_c2_MicroMouseTemplate =
-          MicroMouseTemplate_IN_Drive;
-        MicroMouseTemplate_B.Drive = 1.0;
-        MicroMouseTemplate_FollowLine(1.0, MicroMouseTemplate_B.CastToDouble_m,
-          &MicroMouseTemplate_B.Left, &MicroMouseTemplate_B.Right);
+          MicroMouseTemplate_IN_Drive4;
+        MicroMouseTemplate_DW.DesA = 0.0;
+        MicroMouseTemplate_DW.anglec = MicroMouseTemplate_DW.sum;
       } else {
         MicroMouseTemplate_CenterAngle(MicroMouseTemplate_DW.sum,
           MicroMouseTemplate_DW.DesA, &MicroMouseTemplate_B.Left,
@@ -1685,7 +1739,6 @@ void MicroMouseTemplate_step0(void)
           MicroMouseTemplate_IN_Delay;
       } else {
         MicroMouseTemplate_B.Calibrate = 0.0;
-        MicroMouseTemplate_B.Drive = 0.0;
       }
       break;
 
@@ -1734,10 +1787,9 @@ void MicroMouseTemplate_step0(void)
           (MicroMouseTemplate_DW.temporalCounter_i1 >= 80U)) {
         MicroMouseTemplate_DW.temporalCounter_i1 = 0U;
         MicroMouseTemplate_DW.bitsForTID0.is_c2_MicroMouseTemplate =
-          MicroMouseTemplate_IN_Drive;
-        MicroMouseTemplate_B.Drive = 1.0;
-        MicroMouseTemplate_FollowLine(1.0, MicroMouseTemplate_B.CastToDouble_m,
-          &MicroMouseTemplate_B.Left, &MicroMouseTemplate_B.Right);
+          MicroMouseTemplate_IN_Drive4;
+        MicroMouseTemplate_DW.DesA = 0.0;
+        MicroMouseTemplate_DW.anglec = MicroMouseTemplate_DW.sum;
       } else {
         MicroMouseTemplate_CenterAngle(MicroMouseTemplate_DW.sum,
           MicroMouseTemplate_DW.DesA, &MicroMouseTemplate_B.Left,
@@ -1750,10 +1802,9 @@ void MicroMouseTemplate_step0(void)
           (MicroMouseTemplate_DW.temporalCounter_i1 >= 80U)) {
         MicroMouseTemplate_DW.temporalCounter_i1 = 0U;
         MicroMouseTemplate_DW.bitsForTID0.is_c2_MicroMouseTemplate =
-          MicroMouseTemplate_IN_Drive;
-        MicroMouseTemplate_B.Drive = 1.0;
-        MicroMouseTemplate_FollowLine(1.0, MicroMouseTemplate_B.CastToDouble_m,
-          &MicroMouseTemplate_B.Left, &MicroMouseTemplate_B.Right);
+          MicroMouseTemplate_IN_Drive4;
+        MicroMouseTemplate_DW.DesA = 0.0;
+        MicroMouseTemplate_DW.anglec = MicroMouseTemplate_DW.sum;
       } else {
         MicroMouseTemplate_CenterAngle(MicroMouseTemplate_DW.sum,
           MicroMouseTemplate_DW.DesA, &MicroMouseTemplate_B.Left,
@@ -1886,13 +1937,13 @@ void MicroMouseTemplate_step0(void)
   MicroMouseTemplate_DW.Lmem_not_empty = true;
   if (MicroMouseTemplate_B.Left > 10.0) {
     MicroMouseTemplate_B.cross = MicroMouseTemplate_B.Left / 3.0 + 66.0;
-    MicroMouseTemplate_B.Rb = 0.0;
+    MicroMouseTemplate_B.errorR = 0.0;
   } else if (MicroMouseTemplate_B.Left < -10.0) {
     MicroMouseTemplate_B.cross = 0.0;
-    MicroMouseTemplate_B.Rb = fabs(MicroMouseTemplate_B.Left / 3.0 - 66.0);
+    MicroMouseTemplate_B.errorR = fabs(MicroMouseTemplate_B.Left / 3.0 - 66.0);
   } else {
     MicroMouseTemplate_B.cross = 0.0;
-    MicroMouseTemplate_B.Rb = 0.0;
+    MicroMouseTemplate_B.errorR = 0.0;
   }
 
   if (MicroMouseTemplate_B.Right > 10.0) {
@@ -1909,7 +1960,7 @@ void MicroMouseTemplate_step0(void)
   setDutyCycleInPercentageChannel3(MicroMouseTemplate_DW.obj_n.TimerHandle,
     MicroMouseTemplate_B.cross);
   setDutyCycleInPercentageChannel4(MicroMouseTemplate_DW.obj_n.TimerHandle,
-    MicroMouseTemplate_B.Rb);
+    MicroMouseTemplate_B.errorR);
   setDutyCycleInPercentageChannel1(MicroMouseTemplate_DW.obj_g.TimerHandle,
     MicroMouseTemplate_B.Lf);
   setDutyCycleInPercentageChannel2(MicroMouseTemplate_DW.obj_g.TimerHandle,

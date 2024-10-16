@@ -51,6 +51,7 @@ Verification pane for ERT based targets, which will disable the \
 preprocessor word size checks.
 #endif
 
+extern real_T rt_roundd(real_T u);
 extern void MicroMou_MATLABSystem1_Init(DW_MATLABSystem1_MicroMouseTe_T *localDW,
   P_MATLABSystem1_MicroMouseTem_T *localP);
 extern void MicroMouseTem_MATLABSystem1(real_T rtu_0,
