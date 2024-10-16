@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   22 \
+    NumChartData   25 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -111,6 +111,30 @@
       SFName       ""\
       Path         "Setpoint"\
       SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "connectionsave"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "connectionsave"\
+      SrcLocation  ""\
+      Dimensions   [168,4]\
+    }\
+    ChartData {\
+      Name         "beginpos"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "beginpos"\
+      SrcLocation  ""\
+      Dimensions   [2]\
+    }\
+    ChartData {\
+      Name         "endpos"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "endpos"\
+      SrcLocation  ""\
+      Dimensions   [2]\
     }\
     ChartData {\
       Name         "is_active_c2_MicroMouseTemplate"\

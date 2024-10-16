@@ -67,11 +67,12 @@ typedef struct {
   real_T maxV;
   real_T maxV_m;
   real_T maxV_c;
-  real_T Rf;
   real_T Rb;
   real_T Lf;
   real_T Lb;
-  int8_T a[6];
+  real_T cross;
+  int8_T a[7];
+  int32_T k;
   uint32_T pinReadLoc;
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem6;
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem5;
@@ -89,6 +90,7 @@ typedef struct {
 
 typedef struct {
   int16_T connection[672];
+  int16_T connectionsave[672];
   real_T prePAT[8];
   real_T preDif[8];
   real_T ADCOFF[8];
@@ -115,8 +117,8 @@ typedef struct {
   real_T sumError;
   real_T error;
   real_T Dave;
-  real_T preError_f;
-  real_T sumError_i;
+  real_T preError_k;
+  real_T sumError_k;
   real_T c;
   real_T mindl;
   real_T maxdl;
@@ -139,16 +141,19 @@ typedef struct {
   int16_T pos[2];
   int16_T dest[2];
   int16_T start[2];
+  int16_T beginpos[2];
+  int16_T endpos[2];
   struct {
     uint_T is_c2_MicroMouseTemplate:5;
     uint_T is_active_c2_MicroMouseTemplate:1;
   } bitsForTID0;
 
+  int16_T pathend;
   volatile uint16_T TmpRTBAtMaxofElementsOutport1_B;
   volatile uint16_T TmpRTBAtMaxofElements7Outport1_;
   volatile uint16_T TmpRTBAtMaxofElements8Outport1_;
   volatile uint16_T TmpRTBAtMaxofElements15Outport1;
-  uint16_T temporalCounter_i1;
+  uint8_T temporalCounter_i1;
   boolean_T Rmem_not_empty;
   boolean_T Lmem_not_empty;
   boolean_T prePAT_not_empty;
