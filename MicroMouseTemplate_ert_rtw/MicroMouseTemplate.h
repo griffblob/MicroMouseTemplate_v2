@@ -117,10 +117,10 @@ typedef struct {
   real_T anglec;
   real_T preError;
   real_T sumError;
-  real_T preError_n;
-  real_T sumError_i;
   real_T error;
   real_T Dave;
+  real_T preError_k;
+  real_T sumError_e;
   real_T preError_j;
   real_T sumError_h;
   real_T c;

@@ -132,10 +132,10 @@ static void MicroMouseTemplate_CenterAngle(real_T Angle, real_T Setpoint, real_T
 {
   real_T error;
   error = Setpoint - Angle;
-  MicroMouseTemplate_DW.sumError += error;
-  MicroMouseTemplate_DW.sumError -= 0.005 * MicroMouseTemplate_DW.sumError;
-  *Right = (error - MicroMouseTemplate_DW.preError) * 60.0 + 6.0 * error;
-  MicroMouseTemplate_DW.preError = error;
+  MicroMouseTemplate_DW.sumError_h += error;
+  MicroMouseTemplate_DW.sumError_h -= 0.005 * MicroMouseTemplate_DW.sumError_h;
+  *Right = (error - MicroMouseTemplate_DW.preError_j) * 60.0 + 6.0 * error;
+  MicroMouseTemplate_DW.preError_j = error;
   if (0.0 - *Right >= -100.0) {
     *Left = 0.0 - *Right;
   } else {
@@ -754,13 +754,13 @@ static void MicroMouseTemplate_FollowLine1(const real_T b_Sensors[8], real_T
     MicroMouseTemplate_DW.error = -2.0;
   }
 
-  MicroMouseTemplate_DW.sumError_i += MicroMouseTemplate_DW.error;
-  MicroMouseTemplate_DW.sumError_i -= 0.005 * MicroMouseTemplate_DW.sumError_i;
+  MicroMouseTemplate_DW.sumError += MicroMouseTemplate_DW.error;
+  MicroMouseTemplate_DW.sumError -= 0.005 * MicroMouseTemplate_DW.sumError;
   *errorR = MicroMouseTemplate_DW.error;
   MicroMouseTemplate_DW.Dave = (MicroMouseTemplate_DW.error -
-    MicroMouseTemplate_DW.preError_n) + 0.9 * MicroMouseTemplate_DW.Dave;
+    MicroMouseTemplate_DW.preError) + 0.9 * MicroMouseTemplate_DW.Dave;
   *DesA = 10.0 * MicroMouseTemplate_DW.error + 6.0 * MicroMouseTemplate_DW.Dave;
-  MicroMouseTemplate_DW.preError_n = MicroMouseTemplate_DW.error;
+  MicroMouseTemplate_DW.preError = MicroMouseTemplate_DW.error;
 }
 
 static void MicroMouseTemplate_CenterAngle1(real_T Angle, real_T Setpoint,
@@ -769,10 +769,10 @@ static void MicroMouseTemplate_CenterAngle1(real_T Angle, real_T Setpoint,
   real_T PID;
   real_T error;
   error = Setpoint - Angle;
-  MicroMouseTemplate_DW.sumError_h += error;
-  MicroMouseTemplate_DW.sumError_h -= 0.005 * MicroMouseTemplate_DW.sumError_h;
-  PID = (error - MicroMouseTemplate_DW.preError_j) * 60.0 + 6.0 * error;
-  MicroMouseTemplate_DW.preError_j = error;
+  MicroMouseTemplate_DW.sumError_e += error;
+  MicroMouseTemplate_DW.sumError_e -= 0.005 * MicroMouseTemplate_DW.sumError_e;
+  PID = (error - MicroMouseTemplate_DW.preError_k) * 60.0 + 6.0 * error;
+  MicroMouseTemplate_DW.preError_k = error;
   if (100.0 - PID >= -100.0) {
     *Left = 100.0 - PID;
   } else {
@@ -1568,15 +1568,15 @@ void MicroMouseTemplate_step0(void)
       MicroMouseTemplate_IN_Init1;
     MicroMouseTemplate_Init();
     MicroMouseTemplate_DW.beginpos[0] = 1;
-    MicroMouseTemplate_DW.endpos[0] = 4;
+    MicroMouseTemplate_DW.endpos[0] = 5;
     MicroMouseTemplate_DW.start[0] = 1;
     MicroMouseTemplate_DW.pos[0] = 1;
-    MicroMouseTemplate_DW.dest[0] = 4;
+    MicroMouseTemplate_DW.dest[0] = 5;
     MicroMouseTemplate_DW.beginpos[1] = 1;
-    MicroMouseTemplate_DW.endpos[1] = 4;
+    MicroMouseTemplate_DW.endpos[1] = 5;
     MicroMouseTemplate_DW.start[1] = 1;
     MicroMouseTemplate_DW.pos[1] = 1;
-    MicroMouseTemplate_DW.dest[1] = 4;
+    MicroMouseTemplate_DW.dest[1] = 5;
     MicroMouseTemplate_DW.direction[0] = 1;
     MicroMouseTemplate_DW.direction[1] = 0;
     MicroMouseTemplate_DW.direction[2] = 0;

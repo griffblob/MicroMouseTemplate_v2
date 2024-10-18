@@ -162,20 +162,6 @@
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "MicroMouseTemplate:2489:203:84-92"\
-    }\
-    ChartData {\
-      Name         "sumError"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "MicroMouseTemplate:2489:203:145-153"\
-    }\
-    ChartData {\
-      Name         "preError"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
       SrcLocation  "MicroMouseTemplate:2489:263:79-87"\
     }\
     ChartData {\
@@ -212,6 +198,20 @@
       SFName       ""\
       Path         ""\
       SrcLocation  "MicroMouseTemplate:2489:273:146-154"\
+    }\
+    ChartData {\
+      Name         "preError"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2489:203:84-92"\
+    }\
+    ChartData {\
+      Name         "sumError"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "MicroMouseTemplate:2489:203:145-153"\
     }\
     ChartData {\
       Name         "temporalCounter_i1"\
